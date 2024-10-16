@@ -19,6 +19,21 @@ public class User extends Person {
 		this.password = password;
 	}
 
+	// Static method to validate password rules (e.g., at least 7 characters, includes a special character)
+    public static boolean isValidPassword(String password) {
+        if (password.length() < 7) {
+            return false;
+        }
 
+        String specialCharacters = "[@#$%^&+=!]";
+        String regex = ".*[" + specialCharacters + "]+.*";
+        return password.matches(regex);
+    }
 
+    // Static method to check if the password matches the confirmation
+    public static boolean confirmPassword(String password, String confirmPassword) {
+        return password.equals(confirmPassword);
+    }
 }
+
+
