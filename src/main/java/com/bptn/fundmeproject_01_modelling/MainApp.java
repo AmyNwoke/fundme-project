@@ -29,8 +29,8 @@ public class MainApp {
             password = scanner.nextLine();
 
             // Check if the password meets the criteria
-            if (!User.isValidPassword(password)) {
-                System.out.println("Invalid password. Please ensure it has at least 7 characters and contains at least one special character.");
+            if (!User.passwordValid(password)) {
+                System.out.println("Invalid password. Please ensure it has at least 7 characters.");
                 continue; // Ask for the password again if it's not valid
             }
 
@@ -80,7 +80,62 @@ public class MainApp {
                 }
             }
         }
+     // After successful login, display menu options
+        while (true) {
+            System.out.println("Welcome back! What would you like to do?");
+            System.out.println("1. Create a Group");
+            System.out.println("2. Join an Existing Group");
+            System.out.println("3. Fund Savings");
+            System.out.println("4. View Group Savings Progress");
+            System.out.println("5. Logout");
+            
+         // Get user input
+            int choice = scanner.nextInt();
+            scanner.nextLine();  // Consume newline
+            
+            switch (choice) {
+                case 1:
+                    CreateGroup.createNewGroup();  // Call method to create a new group
+                    break;
+                case 2:
+                    joinGroup();  // Call method to join an existing group
+                    break;
+                case 3:
+                    fundSavings();  // Call method to fund savings
+                    break;
+                case 4:
+                    viewSavingsProgress();  // Call method to view group savings progress
+                    break;
+                case 5:
+                    System.out.println("Logging out... Goodbye!");
+                    scanner.close();
+                    return;  // End the program
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
 
-        scanner.close();
-	}
+	private static void joinGroup() {
+        // Code to join an existing group will go here
+        System.out.println("You selected to join an existing group.");
+    }
+
+    private static void fundSavings() {
+        // Code to fund savings will go here
+        System.out.println("You selected to fund savings.");
+    }
+
+    private static void viewSavingsProgress() {
+        // Code to view group savings progress will go here
+        System.out.println("You selected to view group savings progress.");
+    }
 }
+
+
+        
+        
+        
+        
+       // scanner.close();
+	

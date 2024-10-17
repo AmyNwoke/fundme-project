@@ -1,16 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bptn.fundmeproject.PrimaryController">
-   <children>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" onAction="#switchToSecondary" text="welcome" />
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="190.0" fitWidth="223.0" layoutX="-2.0" layoutY="155.0">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/fundme.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="152.0" fitWidth="224.0">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/WhatsApp%20Image%202024-10-16%20at%201.03.58%20AM.jpeg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="349.0" prefWidth="381.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="139.0" fitWidth="172.0" layoutX="28.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="169.0" layoutY="21.0">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/padlock.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="15.0" layoutY="86.0" prefHeight="20.0" prefWidth="94.0" text="Full Name" textFill="#f67b16">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="126.0" prefHeight="20.0" prefWidth="94.0" text="Email" textFill="#e47e2a">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="6.0" layoutY="162.0" prefHeight="20.0" prefWidth="94.0" text="Password" textFill="#e47e2a">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="6.0" layoutY="212.0" prefHeight="27.0" prefWidth="142.0" text="Confirm password " textFill="#e47e2a">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField layoutX="155.0" layoutY="86.0" prefHeight="25.0" prefWidth="199.0" />
+            <TextField layoutX="152.0" layoutY="126.0" prefHeight="25.0" prefWidth="201.0" />
+            <PasswordField layoutX="153.0" layoutY="162.0" prefHeight="25.0" prefWidth="204.0" />
+            <PasswordField layoutX="153.0" layoutY="213.0" prefHeight="25.0" prefWidth="204.0" />
+            <Button layoutX="140.0" layoutY="256.0" mnemonicParsing="false" style="-fx-background-color: orange;" text="Sign Up" />
+            <Label layoutX="174.0" layoutY="70.0" textFill="#db1616" />
+            <Label layoutX="104.0" layoutY="297.0" prefHeight="17.0" prefWidth="187.0" text="Already have an account?" />
+            <Button layoutX="253.0" layoutY="293.0" mnemonicParsing="false" style="-fx-background-color: ash;" text="Log in " />
+         </children>
+      </AnchorPane>
+   </right>
+   <center>
+      <Label text="Label" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
