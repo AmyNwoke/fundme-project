@@ -3,26 +3,25 @@ package com.bptn.fundmeproject_01_modelling;
 import java.util.Scanner;
 
 public class MainApp {
-	
 
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		
-		System.out.println("Hello, you are one step closer to achieving your savings goal");
-		
-		System.out.println("Enter your full name: ");
+    public static void main(String[] args) {
+        // Create a GroupManager instance to handle groups
+        GroupManager groupManager = new GroupManager();
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Hello, you are one step closer to achieving your savings goal");
+
+        System.out.println("Enter your full name: ");
         String fullName = scanner.nextLine();
 
         System.out.println("Enter your email: ");
         String email = scanner.nextLine();
-        
-       // System.out.println("Enter your password: ");
-       // String password = scanner.nextLine();
-        
-     // Password validation and confirmation
+
+        // Password validation and confirmation
         String password;
         String confirmPassword;
-        
+
         while (true) {
             // Input password
             System.out.println("Enter your password (at least 7 characters, including 1 special character): ");
@@ -54,8 +53,6 @@ public class MainApp {
         System.out.println("Full Name: " + user.getName());
         System.out.println("Email: " + user.getEmail());
 
-        
-        
         // Log in process with retry option
         while (true) {
             System.out.println("Welcome back");
@@ -70,17 +67,18 @@ public class MainApp {
                 break;  // Exit the loop on successful login
             } else {
                 System.out.println("Invalid email or password.");
-                
+
                 // Ask the user if they want to try again
                 System.out.println("Do you want to try logging in again? (yes/no)");
                 String tryAgain = scanner.nextLine();
-                if (tryAgain.equalsIgnoreCase("no")) { //equalsignorecase is a method in java that compares two strings
+                if (tryAgain.equalsIgnoreCase("no")) { 
                     System.out.println("Exiting login. Goodbye!");
                     break;  // Exit the login loop and end the program
                 }
             }
         }
-     // After successful login, display menu options
+
+        // After successful login, display menu options
         while (true) {
             System.out.println("Welcome back! What would you like to do?");
             System.out.println("1. Create a Group");
@@ -88,24 +86,25 @@ public class MainApp {
             System.out.println("3. Fund Savings");
             System.out.println("4. View Group Savings Progress");
             System.out.println("5. Logout");
-            
-         // Get user input
+
+            // Get user input
             int choice = scanner.nextInt();
             scanner.nextLine();  // Consume newline
-            
+
             switch (choice) {
                 case 1:
-                    CreateGroup.createNewGroup();  // Call method to create a new group
+                    // Pass the groupManager instance when creating a new group
+                    CreateGroup.createNewGroup(groupManager);  
                     break;
                 case 2:
-                    joinGroup();  // Call method to join an existing group
+                    joinGroup(groupManager);  // Pass groupManager to join an existing group
                     break;
                 case 3:
-                    fundSavings();  // Call method to fund savings
+                    FundSavings.fundSavings(groupManager);  // Call method to fund savings
                     break;
-                case 4:
-                    viewSavingsProgress();  // Call method to view group savings progress
-                    break;
+               // case 4:
+                   // viewSavingsProgress();  // Call method to view group savings progress
+                   // break;
                 case 5:
                     System.out.println("Logging out... Goodbye!");
                     scanner.close();
@@ -116,26 +115,16 @@ public class MainApp {
         }
     }
 
-	private static void joinGroup() {
-        // Code to join an existing group will go here
+    // Method to join an existing group (uses groupManager)
+    private static void joinGroup(GroupManager groupManager) {
+        // Code to join an existing group using the groupManager
         System.out.println("You selected to join an existing group.");
     }
 
-    private static void fundSavings() {
-        // Code to fund savings will go here
-        System.out.println("You selected to fund savings.");
-    }
+  
 
-    private static void viewSavingsProgress() {
+   // private static void viewSavingsProgress() {
         // Code to view group savings progress will go here
-        System.out.println("You selected to view group savings progress.");
-    }
+       // System.out.println("You selected to view group savings progress.");
+   // }
 }
-
-
-        
-        
-        
-        
-       // scanner.close();
-	

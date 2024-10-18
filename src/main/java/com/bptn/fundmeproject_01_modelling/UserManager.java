@@ -11,7 +11,7 @@ public class UserManager {
     public static void saveUserToFile(User user) {
         try {
             // Using 'storage' as the variable name for FileWriter
-            FileWriter storage = new FileWriter("userData.txt", true);  // 'true' means append mode
+            FileWriter storage = new FileWriter("userData.csv", true);  // 'true' means append mode
             storage.write(user.getName() + "," + user.getEmail() + "," + user.getPassword() + "\n");
             storage.close();
             System.out.println("User data saved successfully.");
@@ -24,7 +24,7 @@ public class UserManager {
     // Method to validate user login credentials
     public static boolean validateUser(String email, String password) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("userData.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("userData.csv"));
             String line;
             while ((line = reader.readLine()) != null) {
                 // Split the line by commas to extract user details
