@@ -100,7 +100,9 @@ public class MainApp {
 			}
 
 			// After successful login, display menu options
-			while (true) {
+			Boolean showmenu = true;
+			
+			while (showmenu) {
 				System.out.println("Welcome back! What would you like to do?");
 				System.out.println("1. Create a Group");
 				System.out.println("2. Join an Existing Group");
@@ -116,7 +118,7 @@ public class MainApp {
 					switch (choice) {
 					case 1:
 						// Pass the groupManager instance when creating a new group
-						CreateGroup.createNewGroup(groupManager);
+						CreateGroup.createNewGroup(groupManager, loggedInUser);
 						break;
 					case 2:
 						JoinGroup.joinExistingGroup(groupManager, loggedInUser); // Pass groupManager to join an
@@ -130,15 +132,18 @@ public class MainApp {
 					// break;
 					case 5:
 						System.out.println("Logging out... Goodbye!");
-						scanner.close();
-						return; // End the program
+						showmenu = false;
+						break;
+			
+					
+					 // End the program
 					default:
 						System.out.println("Invalid choice. Please try again.");
 					}
 
 				} else {
 					System.out.println("Invalid input. Please enter a number between 1 and 5.");
-					scanner.nextLine(); // Clear invalid input
+					//scanner.nextLine(); // Clear invalid input
 
 				}
 			}

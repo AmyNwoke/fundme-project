@@ -1,5 +1,7 @@
 package com.bptn.fundmeproject;
 
+import java.io.IOException;
+
 import com.bptn.fundmeproject_01_modelling.Group;
 import com.bptn.fundmeproject_01_modelling.GroupManager;
 import com.bptn.fundmeproject_01_modelling.User;
@@ -121,11 +123,11 @@ public class JoinGroupController {
     }
 
     // Helper method to show success alert (if you need this separately)
-    private void showSuccessAlert(String message) {
+    /*private void showSuccessAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
-    }
+    }*/
 }

@@ -3,7 +3,7 @@ import java.util.Scanner;         // For reading user input
 
 public class CreateGroup {
 
-    public static void createNewGroup(GroupManager groupManager) {
+    public static void createNewGroup(GroupManager groupManager, User loggedInUser) {
         try (Scanner scanner = new Scanner(System.in)) {
             // Gather group details from the user
             System.out.println("Enter the group name: ");
@@ -47,7 +47,7 @@ public class CreateGroup {
 
             // If the user chooses to fund the savings, display Interac email and save group to file
             if (fundSavingsNow.equalsIgnoreCase("yes")) {
-                System.out.println("Please send your payment via Interac to: savings@fundmeapp.com");
+                System.out.println("Please send your payment via Interac to: fundmesavings.gmail.com");
                 System.out.println("A confirmation email will be sent once the payment is received.");
 
                 // Create a new group object
@@ -56,13 +56,16 @@ public class CreateGroup {
                 // Save the group to the GroupManager (also saves to the file)
                 groupManager.addGroup(newGroup);
                 groupManager.saveGroupToFile(newGroup);
+                
+                EmailManager emailManager = new EmailManager();
+                emailManager.sendGroupCreationEmail(loggedInUser.getName(), loggedInUser.getEmail(), groupCode);
 
                 // Print success message
                 System.out.println("Group creation successful!");
                 
                 // Exit to login
-                System.out.println("Exiting to login. Please log in again.");
-                return;  // Exit the group creation flow and return to login
+               // System.out.println("Exiting to login. Please log in again.");
+                //return;  // Exit the group creation flow and return to login
             } else {
                 System.out.println("Group creation canceled. Exiting to login.");
                 return;  // Exit the group creation flow and return to login
