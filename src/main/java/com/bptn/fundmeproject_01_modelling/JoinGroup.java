@@ -9,7 +9,7 @@ public class JoinGroup {
 			System.out.println("Group code :  ");
 			String groupCode = scanner.nextLine();
 			
-			//after code has been inputed, check groupmanager to find the group to see if it exist
+			//after code has been inputed, check groupManager to find the group to see if it exist
 			
 			Group group = groupManager.findGroupByCode(groupCode);
 			

@@ -123,7 +123,7 @@ public class MainApp {
 																					// existing group
 						break;
 					case 3:
-						FundSavings.fundSavings(groupManager); // Call method to fund savings
+						FundSavings.fundSavings(groupManager, loggedInUser); // Call method to fund savings
 						break;
 					// case 4:
 					// viewSavingsProgress(); // Call method to view group savings progress

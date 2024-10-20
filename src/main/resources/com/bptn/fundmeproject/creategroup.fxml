@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bptn.fundmeproject.DashboardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bptn.fundmeproject.CreateGroupController">
    <left>
       <VBox prefHeight="334.0" prefWidth="140.0" style="-fx-border-color: gray; -fx-border-radius: 5px; -fx-border-style: solid; -fx-border-width: 2px; -fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
@@ -116,19 +116,22 @@
             <Label layoutX="14.0" layoutY="323.0" prefHeight="17.0" prefWidth="137.0" text="Savings Frequency" textFill="#d25e16" />
             <Label layoutX="14.0" layoutY="258.0" prefHeight="17.0" prefWidth="137.0" text="Start Date" textFill="#d25e16" />
             <Label layoutX="14.0" layoutY="292.0" prefHeight="17.0" prefWidth="137.0" text="Purpose of Saving" textFill="#d25e16" />
-            <TextField layoutX="212.0" layoutY="97.0" prefHeight="25.0" prefWidth="163.0" />
-            <TextField layoutX="213.0" layoutY="139.0" prefHeight="25.0" prefWidth="161.0" />
-            <TextField layoutX="213.0" layoutY="178.0" prefHeight="25.0" prefWidth="161.0" />
-            <TextField layoutX="213.0" layoutY="214.0" prefHeight="25.0" prefWidth="161.0" />
-            <TextField layoutX="213.0" layoutY="288.0" prefHeight="25.0" prefWidth="161.0" />
-            <DatePicker layoutX="213.0" layoutY="254.0" />
+            <TextField fx:id="groupNameField" layoutX="212.0" layoutY="97.0" prefHeight="25.0" prefWidth="177.0" promptText="Enter the name of your group" />
+            <TextField fx:id="memberCountField" layoutX="213.0" layoutY="139.0" prefHeight="25.0" prefWidth="177.0" promptText="What is the size of your group?" />
+            <TextField fx:id="savingsTargetField" layoutX="213.0" layoutY="178.0" prefHeight="25.0" prefWidth="179.0" promptText="Savings budget of your group" />
+            <TextField fx:id="savingsPeriodField" layoutX="213.0" layoutY="214.0" prefHeight="25.0" prefWidth="181.0" promptText="Length of savings in months" />
+            <DatePicker fx:id="startDateField" layoutX="213.0" layoutY="254.0" prefHeight="25.0" prefWidth="185.0" />
             <Label contentDisplay="CENTER" layoutX="216.0" layoutY="323.0" prefHeight="17.0" prefWidth="163.0" text="             Monthly" />
-            <Button layoutX="153.0" layoutY="352.0" mnemonicParsing="false" text="Create Group" />
+            <Button layoutX="153.0" layoutY="352.0" mnemonicParsing="false" onAction="#createGroupButtonOnAction" text="Create Group">
+               <font>
+                  <Font size="10.0" />
+               </font></Button>
             <Label alignment="CENTER" layoutX="48.0" layoutY="58.0" prefHeight="20.0" prefWidth="309.0" text="Enter the required information to create a group" textFill="#0d0d0d">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <TextField fx:id="purposeOfSavingField" layoutX="212.0" layoutY="288.0" prefHeight="25.0" prefWidth="182.0" promptText="Example vacation" />
          </children>
       </AnchorPane>
    </center>

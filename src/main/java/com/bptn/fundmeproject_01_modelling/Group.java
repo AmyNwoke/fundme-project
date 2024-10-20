@@ -1,6 +1,7 @@
 package com.bptn.fundmeproject_01_modelling;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Group {
     private String groupName;
@@ -53,6 +54,20 @@ public class Group {
     // Add the missing method for getSavingsPeriod
     public int getSavingsPeriod() {
         return savingsPeriod;
+    }
+    
+    
+ public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	// Getter method to retrieve the list of members
+    public List<String> getMembers() {
+        return this.members; // Return the list of members
     }
 
     // Method to add a member to the group

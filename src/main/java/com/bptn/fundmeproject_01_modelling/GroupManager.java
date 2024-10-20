@@ -1,6 +1,8 @@
 package com.bptn.fundmeproject_01_modelling;
 
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -65,6 +67,46 @@ public class GroupManager {
         }
     }
     
+ // Method to calculate total group savings
+    public double calculateTotalGroupSavings(String groupCode) {
+        double totalSavings = 0.0;
+        
+        // Go through the group data file and add up all contributions for the group
+        try (BufferedReader reader = new BufferedReader(new FileReader("groupData.csv"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data[0].equals("Contribution") && data[1].equals(groupCode)) {
+                    totalSavings += Double.parseDouble(data[3]); // Add the contribution amount
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        return totalSavings;
+    }
+
+    // Method to calculate the user's total contribution in a specific group
+    public double calculateUserContribution(String groupCode, String memberName) {
+        double userTotalContribution = 0.0;
+        
+        // Go through the group data file and sum up the user's contributions for the group
+        try (BufferedReader reader = new BufferedReader(new FileReader("groupData.csv"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data[0].equals("Contribution") && data[1].equals(groupCode) && data[2].equals(memberName)) {
+                    userTotalContribution += Double.parseDouble(data[3]); // Add user's contribution amount
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        return userTotalContribution;
+    }
+
     
     // Method to retrieve all groups (if needed)
     public ArrayList<Group> getAllGroups() {
