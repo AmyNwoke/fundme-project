@@ -1,5 +1,8 @@
 package com.bptn.fundmeproject_01_modelling;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class User extends Person {
 	
 	
@@ -31,6 +34,15 @@ public class User extends Person {
     // Static method to check if the password matches the confirmation
     public static boolean confirmPassword(String password, String confirmPassword) {
         return password.equals(confirmPassword);
+    }
+    
+    //email validator
+    private static final String EMAIL_REGEX = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+
+    public static boolean isValidEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }
 

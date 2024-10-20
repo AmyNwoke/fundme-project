@@ -39,6 +39,33 @@ public class GroupManager {
         }
     }
 
+ // Method to find a group by group code
+    public Group findGroupByCode(String groupCode) {
+        for (Group group : groupList) {
+            if (group.getGroupCode().equals(groupCode)) {
+                return group;
+            }
+        }
+        return null;  // Return null if group not found
+    }
+    
+ // Method to add a member to a group
+    public void addMemberToGroup(String groupCode, String memberName) {
+        Group group = findGroupByCode(groupCode);
+        if (group != null) {
+            // Update group with the new member (in memory)
+            group.addMember(memberName);
+
+            // Save updated group information to the CSV file (optional)
+            saveGroupToFile(group);
+
+            System.out.println(memberName + " was added to the group: " + groupCode);
+        } else {
+            System.out.println("Group with code " + groupCode + " not found.");
+        }
+    }
+    
+    
     // Method to retrieve all groups (if needed)
     public ArrayList<Group> getAllGroups() {
         return groupList;
