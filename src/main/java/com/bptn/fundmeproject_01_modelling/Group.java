@@ -7,13 +7,13 @@ public class Group {
     private String groupName;
     private int membersCount;
     private double savingsTarget;
-    private int savingsPeriod;  // This is what you are missing in the current error
+    private int savingsPeriod;  
     private String savingsFrequency;
     private String startDate;
     private String savingFor;
     private String groupCode;
     private double monthlySavingsPerMember;
-    private ArrayList<String> members; //the list where members we are adding will be stored
+    private ArrayList<String> members;  // List to store group members
 
     // Constructor
     public Group(String groupName, int membersCount, double savingsTarget, int savingsPeriod, String savingsFrequency,
@@ -21,7 +21,7 @@ public class Group {
         this.groupName = groupName;
         this.membersCount = membersCount;
         this.savingsTarget = savingsTarget;
-        this.savingsPeriod = savingsPeriod;  // Ensure this is being set
+        this.savingsPeriod = savingsPeriod;
         this.savingsFrequency = savingsFrequency;
         this.startDate = startDate;
         this.savingFor = savingFor;
@@ -30,7 +30,7 @@ public class Group {
         this.members = new ArrayList<>();
     }
 
-    // Getters and setters (if needed)
+    // Getters and setters
     public String getGroupName() {
         return groupName;
     }
@@ -51,23 +51,21 @@ public class Group {
         return savingFor;
     }
 
-    // Add the missing method for getSavingsPeriod
     public int getSavingsPeriod() {
         return savingsPeriod;
     }
     
-    
- public String getStartDate() {
-		return startDate;
-	}
+    public String getStartDate() {
+        return startDate;
+    }
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
 
-	// Getter method to retrieve the list of members
+    // Getter method to retrieve the list of members
     public List<String> getMembers() {
-        return this.members; // Return the list of members
+        return this.members;  // Return the list of members
     }
 
     // Method to add a member to the group
@@ -76,11 +74,19 @@ public class Group {
         membersCount++;  // Increase the members count
     }
 
-    // Override toString() method to display group details
+    public int getMembersCount() {
+		return membersCount;
+	}
+
+	public void setMembersCount(int membersCount) {
+		this.membersCount = membersCount;
+	}
+
+	// Updated toString() method to include the members
     @Override
     public String toString() {
         return groupName + "," + groupCode + "," + membersCount + "," + savingsTarget + "," +
                 savingsPeriod + "," + monthlySavingsPerMember + "," + savingsFrequency + "," + startDate + "," +
-                savingFor;
+                savingFor + "," + String.join(";", members);  // Add members as a semicolon-separated list
     }
 }

@@ -31,7 +31,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="21.0" prefWidth="136.0">
                <children>
-                  <Button mnemonicParsing="false" text="Create Group" textFill="#e26618">
+                  <Button mnemonicParsing="false" onAction="#switchToCreateGroupOnAction" text="Create Group" textFill="#e26618">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>
@@ -49,7 +49,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="29.0" prefWidth="136.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="13.0" prefWidth="91.0" text="Join Group" textFill="#e26618">
+                  <Button mnemonicParsing="false" onAction="#switchTojoinGroupOnAction" prefHeight="13.0" prefWidth="91.0" text="Join Group" textFill="#e26618">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>
@@ -85,7 +85,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="0.0" prefWidth="136.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="82.0" text="Sign Out" textFill="#e26618">
+                  <Button mnemonicParsing="false" onAction="#switchToSignupButtonOnAction" prefHeight="43.0" prefWidth="82.0" text="Sign Out" textFill="#e26618">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>

@@ -54,8 +54,9 @@ public class CreateGroup {
                 Group newGroup = new Group(groupName, membersCount, savingsTarget, savingsPeriod, savingsFrequency, startDate, savingFor, groupCode, monthlySavingsPerMember);
 
                 // Save the group to the GroupManager (also saves to the file)
-                groupManager.addGroup(newGroup);
-                groupManager.saveGroupToFile(newGroup);
+                groupManager.addGroup(newGroup, loggedInUser.getName());
+                groupManager.addMemberToGroup(groupCode, loggedInUser.getName());
+                groupManager.saveToFile();
                 
                 EmailManager emailManager = new EmailManager();
                 emailManager.sendGroupCreationEmail(loggedInUser.getName(), loggedInUser.getEmail(), groupCode);

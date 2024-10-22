@@ -2,6 +2,7 @@ package com.bptn.fundmeproject;
 
 import java.io.IOException;
 
+import com.bptn.fundmeproject_01_modelling.User;
 import com.bptn.fundmeproject_01_modelling.UserManager;
 
 import javafx.fxml.FXML;
@@ -21,14 +22,19 @@ public class LoginController {
 	private void loginButtonOnAction() {
 		String email = userEmail.getText().trim();
 		String password = userPassword.getText();
-		boolean user = UserManager.validateUser(email, password);
-		if(!user) {
-			showErrorAlert("Username or pasword is incorrect!");
+		
+		// Fetch the full User object using the email and password
+		User user = UserManager.getUserByEmailAndPassword(email, password);
+
+		// If user is null, it means no matching user was found
+		if (user == null) {
+			showErrorAlert("Username or password is incorrect!");
 		} else {
+			// Set the logged-in user and switch to dashboard
 			try {
+				App.loggedInUser = user; // Use the fetched User object
 				App.setRoot("dashboard");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

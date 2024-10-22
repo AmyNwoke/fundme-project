@@ -19,9 +19,9 @@
                   <Image url="@WhatsApp%20Image%202024-10-16%20at%201.03.58%20AM.jpeg" />
                </image>
             </ImageView>
-            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="136.0">
+            <HBox alignment="CENTER" prefHeight="26.0" prefWidth="98.0">
                <children>
-                  <ImageView fitHeight="43.0" fitWidth="57.0">
+                  <ImageView fitHeight="18.0" fitWidth="34.0">
                      <image>
                         <Image url="@../../../../../../../../Downloads/createagroup.png" />
                      </image>
@@ -30,16 +30,16 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="21.0" prefWidth="136.0">
                <children>
-                  <Button mnemonicParsing="false" text="Create Group" textFill="#e26618">
+                  <Button mnemonicParsing="false" onAction="#switchToCreateGroupOnAction" text="Create Group" textFill="#e26618">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="36.0" prefWidth="136.0">
+            <HBox alignment="CENTER" prefHeight="18.0" prefWidth="136.0">
                <children>
-                  <ImageView fitHeight="43.0" fitWidth="52.0">
+                  <ImageView fitHeight="16.0" fitWidth="31.0">
                      <image>
                         <Image url="@../../../../../../../../Downloads/joinagroup.png" />
                      </image>
@@ -48,34 +48,34 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="29.0" prefWidth="136.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="13.0" prefWidth="91.0" text="Join Group" textFill="#e26618">
+                  <Button mnemonicParsing="false" onAction="#switchTojoinGroupOnAction" prefHeight="13.0" prefWidth="91.0" text="Join Group" textFill="#e26618">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="37.0" prefWidth="136.0">
+            <HBox alignment="CENTER" prefHeight="20.0" prefWidth="136.0">
                <children>
-                  <ImageView fitHeight="36.0" fitWidth="48.0">
+                  <ImageView fitHeight="9.0" fitWidth="30.0">
                      <image>
                         <Image url="@../../../../../../../../Downloads/money.png" />
                      </image>
                   </ImageView>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="136.0">
+            <HBox alignment="CENTER" prefHeight="44.0" prefWidth="136.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="85.0" text="Fund Savings" textFill="#e26618">
+                  <Button mnemonicParsing="false" onAction="#switchToFundSavingsOnAction" prefHeight="22.0" prefWidth="85.0" text="Fund Savings" textFill="#e26618">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="48.0" prefWidth="136.0">
+            <HBox alignment="CENTER" prefHeight="34.0" prefWidth="136.0">
                <children>
-                  <ImageView fitHeight="30.0" fitWidth="57.0">
+                  <ImageView fitHeight="19.0" fitWidth="36.0">
                      <image>
                         <Image url="@../../../../../../../../Downloads/signout.jpg" />
                      </image>
@@ -84,7 +84,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="0.0" prefWidth="136.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="82.0" text="Sign Out" textFill="#e26618">
+                  <Button mnemonicParsing="false" onAction="#switchToSignupButtonOnAction" prefHeight="43.0" prefWidth="82.0" text="Sign Out" textFill="#e26618">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>
@@ -97,12 +97,31 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: ash;" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane layoutX="314.0" layoutY="98.0" prefHeight="101.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;" />
-            <AnchorPane layoutX="14.0" layoutY="253.0" prefHeight="101.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;" />
-            <AnchorPane layoutX="164.0" layoutY="98.0" prefHeight="101.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;" />
-            <AnchorPane layoutX="14.0" layoutY="98.0" prefHeight="101.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;" />
-            <AnchorPane layoutX="164.0" layoutY="253.0" prefHeight="101.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;" />
-            <AnchorPane layoutX="314.0" layoutY="253.0" prefHeight="101.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;" />
+            <AnchorPane layoutX="326.0" layoutY="98.0" prefHeight="61.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
+               <children>
+                  <Label layoutX="14.0" layoutY="5.0" text="Your Total Services " />
+                  <Label layoutX="15.0" layoutY="33.0" text="Your  Savings here " />
+               </children></AnchorPane>
+            <AnchorPane layoutX="14.0" layoutY="231.0" prefHeight="49.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
+               <children>
+                  <Label layoutX="7.0" layoutY="14.0" text="Monthly Contribution " />
+                  <Label layoutX="20.0" layoutY="42.0" text="contribution here" />
+               </children></AnchorPane>
+            <AnchorPane layoutX="164.0" layoutY="98.0" prefHeight="62.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
+               <children>
+                  <Label layoutX="11.0" layoutY="5.0" text="Group Total Savings" />
+                  <Label layoutX="12.0" layoutY="33.0" text="Group Savings here " />
+               </children></AnchorPane>
+            <AnchorPane layoutX="14.0" layoutY="98.0" prefHeight="60.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
+               <children>
+                  <Label layoutX="14.0" layoutY="5.0" text="Target Savings " />
+                  <Label layoutX="12.0" layoutY="33.0" text="Target Savings here " />
+               </children></AnchorPane>
+            <AnchorPane layoutX="164.0" layoutY="229.0" prefHeight="50.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
+               <children>
+                  <Label layoutX="25.0" layoutY="14.0" text="Savings Period " />
+                  <Label layoutX="12.0" layoutY="45.0" text="Savings period  here" />
+               </children></AnchorPane>
             <Label layoutX="361.0" layoutY="51.0" prefHeight="17.0" prefWidth="63.0" text="Hi, Name " />
             <HBox alignment="CENTER" layoutX="351.0" prefHeight="51.0" prefWidth="83.0">
                <children>
@@ -113,6 +132,16 @@
                   </ImageView>
                </children>
             </HBox>
+            <Label layoutX="21.0" layoutY="26.0" text="Group Name " />
+            <Label layoutX="21.0" layoutY="42.0" prefHeight="17.0" prefWidth="106.0" text="Group Name here " />
+            <Label layoutX="139.0" layoutY="26.0" text="Group Code " />
+            <Label layoutX="139.0" layoutY="42.0" text="Group Code here  " />
+            <AnchorPane layoutX="326.0" layoutY="229.0" prefHeight="50.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
+               <children>
+                  <Label layoutX="25.0" layoutY="14.0" text="Savings Period " />
+                  <Label layoutX="12.0" layoutY="45.0" text="Savings period  here" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </center>

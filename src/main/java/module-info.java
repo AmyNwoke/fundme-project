@@ -4,7 +4,8 @@ module com.bptn.demofx {
     requires javafx.graphics;
 	requires javafx.base;
 	requires jakarta.mail;
-
+	exports com.bptn.fundmeproject_01_modelling to javafx.fxml; 
+	
 	
 	
 

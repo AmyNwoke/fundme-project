@@ -9,21 +9,17 @@ import com.bptn.fundmeproject_01_modelling.GroupManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
-//import javafx.scene.control.DialogPane;
-
 
 public class CreateGroupController {
-	
-	@FXML
+
+    @FXML
     private TextField groupNameField;  // Match this with your SceneBuilder fx:id
 
     @FXML
     private TextField memberCountField;  // Match this with your SceneBuilder fx:id
-    
+
     @FXML
     private TextField savingsTargetField;
 
@@ -33,17 +29,11 @@ public class CreateGroupController {
     @FXML
     private DatePicker startDateField;
 
-      
     @FXML
     private TextField purposeOfSavingField;
-    
-   // @FXML
-   // void createGroupButtonOnAction(ActionEvent event) {
 
- //   }
-
- // Group Manager to manage the group
-    private GroupManager groupManager = new GroupManager(); // This will hold groups in memory
+    // Group Manager to manage the group
+    private GroupManager groupManager = GroupManager.getInstance();
 
     @FXML
     void createGroupButtonOnAction(ActionEvent event) {
@@ -54,7 +44,6 @@ public class CreateGroupController {
         String savingsPeriodStr = savingsPeriodField.getText().trim();
         LocalDate startDate = startDateField.getValue();  // Get date from DatePicker
         String purpose = purposeOfSavingField.getText().trim();
-
 
         String savingsFrequency = "Monthly"; // Fixed value as mentioned
 
@@ -78,47 +67,35 @@ public class CreateGroupController {
             return;
         }
 
+        // Check if loggedInUser is available in App class
+        if (App.loggedInUser == null) {
+            showErrorAlert("User not logged in!");
+            return;
+        }
+
         // Create new group and add it to the group manager
         String groupCode = generateGroupCode();  // Call method to generate group code
         Group newGroup = new Group(groupName, memberCount, savingsTarget, savingsPeriod,
                 savingsFrequency, startDate.toString(), purpose, groupCode,
                 savingsTarget / savingsPeriod / memberCount);
 
-        // Add group to GroupManager
-        groupManager.addGroup(newGroup);
+        // Add group to GroupManager and include the creator as the first member
+        groupManager.addGroup(newGroup, App.loggedInUser.getName());
 
-        // Show the custom confirmation with "Fund Savings" button
-        showConfirmationWithFundOption(groupCode);
+        // Show success message without the fund button
+        showSuccessAlert(groupCode);
 
         // Clear the form after creation
         clearForm();
     }
 
-    // This method shows the custom confirmation with the option to "Fund Savings"
-    private void showConfirmationWithFundOption(String groupCode) {
+    // Method to show a simple success alert after group creation
+    private void showSuccessAlert(String groupCode) {
         Alert confirmationAlert = new Alert(Alert.AlertType.INFORMATION);
         confirmationAlert.setTitle("Group Created Successfully");
         confirmationAlert.setHeaderText("Group Code: " + groupCode);
-        confirmationAlert.setContentText("Your group has been created. Please share the group code with others so they can join. Would you like to fund the group's savings now?");
-
-        // Add a "Fund Savings" button to the alert
-        ButtonType fundButton = new ButtonType("Fund Savings");
-        confirmationAlert.getButtonTypes().add(fundButton);
-
-        // Get the dialog pane and customize it
-       // DialogPane dialogPane = confirmationAlert.getDialogPane();
-        
-        // Add an event handler to the "Fund Savings" button
-        confirmationAlert.showAndWait().ifPresent(response -> {
-            if (response == fundButton) {
-                // If "Fund Savings" button is pressed, switch to the Fund Savings screen
-                try {
-                    App.setRoot("fundSavings");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        confirmationAlert.setContentText("Your group has been created. Please share the group code with others so they can join.");
+        confirmationAlert.showAndWait();  // No Fund Savings button
     }
 
     private void showErrorAlert(String message) {
@@ -135,15 +112,26 @@ public class CreateGroupController {
         savingsTargetField.clear();
         savingsPeriodField.clear();
         startDateField.setValue(null);
-     	 purposeOfSavingField.clear();
-
+        purposeOfSavingField.clear();
     }
 
     // Method to generate a random group code
     private String generateGroupCode() {
         return String.valueOf((int) (Math.random() * 900000) + 100000);  // 6-digit random number
     }
+
+    @FXML
+    void switchTojoinGroupOnAction(ActionEvent event) throws IOException {
+        App.setRoot("joingroup");
+    }
+
+    @FXML
+    void switchToFundSavingsOnAction(ActionEvent event) throws IOException {
+        App.setRoot("fundsavings");
+    }
+
+    @FXML
+    void switchToSignupOnAction(ActionEvent event) throws IOException {
+        App.setRoot("signup");
+    }
 }
-
-
-
