@@ -8,7 +8,7 @@ import jakarta.mail.internet.*;
 public class EmailManager {
 
     private String fromEmail = "fundmesavings@gmail.com"; // Your email
-    private String password = "@Lilboo25"; // Your email password
+    private String password = "zaxa uohd rbtl tgtw"; // Your email password
     private String smtpHost = "smtp.gmail.com"; // SMTP server address
     private int smtpPort = 587; // SMTP port
 

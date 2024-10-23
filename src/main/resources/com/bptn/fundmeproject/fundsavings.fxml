@@ -13,16 +13,16 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bptn.fundmeproject.FundSavingsController">
    <left>
-      <VBox prefHeight="334.0" prefWidth="140.0" style="-fx-border-color: gray; -fx-border-radius: 5px; -fx-border-style: solid; -fx-border-width: 2px; -fx-background-color: white;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="334.0" prefWidth="140.0" style="-fx-border-color: #B2BEB5; -fx-border-radius: 5px; -fx-border-style: solid; -fx-border-width: 2px; -fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="80.0" fitWidth="136.0">
                <image>
                   <Image url="@WhatsApp%20Image%202024-10-16%20at%201.03.58%20AM.jpeg" />
                </image>
             </ImageView>
-            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="136.0">
+            <HBox alignment="CENTER" prefHeight="31.0" prefWidth="136.0">
                <children>
-                  <ImageView fitHeight="43.0" fitWidth="57.0">
+                  <ImageView fitHeight="22.0" fitWidth="41.0">
                      <image>
                         <Image url="@../../../../../../../../Downloads/createagroup.png" />
                      </image>
@@ -38,9 +38,9 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="36.0" prefWidth="136.0">
+            <HBox alignment="CENTER" prefHeight="23.0" prefWidth="136.0">
                <children>
-                  <ImageView fitHeight="43.0" fitWidth="52.0">
+                  <ImageView fitHeight="23.0" fitWidth="32.0">
                      <image>
                         <Image url="@../../../../../../../../Downloads/joinagroup.png" />
                      </image>
@@ -56,9 +56,9 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="37.0" prefWidth="136.0">
+            <HBox alignment="CENTER" prefHeight="29.0" prefWidth="136.0">
                <children>
-                  <ImageView fitHeight="36.0" fitWidth="48.0">
+                  <ImageView fitHeight="21.0" fitWidth="31.0">
                      <image>
                         <Image url="@../../../../../../../../Downloads/money.png" />
                      </image>
@@ -74,9 +74,9 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="48.0" prefWidth="136.0">
+            <HBox alignment="CENTER" prefHeight="34.0" prefWidth="136.0">
                <children>
-                  <ImageView fitHeight="30.0" fitWidth="57.0">
+                  <ImageView fitHeight="25.0" fitWidth="38.0">
                      <image>
                         <Image url="@../../../../../../../../Downloads/signout.jpg" />
                      </image>
@@ -96,22 +96,12 @@
       </VBox>
    </left>
    <center>
-      <AnchorPane prefHeight="425.0" prefWidth="460.0" style="-fx-background-color: ash;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="425.0" prefWidth="460.0" style="-fx-background-color: #B2BEB5;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="385.0" layoutY="39.0" prefHeight="17.0" prefWidth="63.0" text="Hi, Name " />
-            <HBox alignment="CENTER" layoutX="371.0" prefHeight="39.0" prefWidth="63.0">
-               <children>
-                  <ImageView fitHeight="25.0" fitWidth="26.0">
-                     <image>
-                        <Image url="@../../../../../../../../Pictures/Screenshots/Screenshot%202024-10-19%20214750.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
             <Label layoutX="14.0" layoutY="169.0" prefHeight="17.0" prefWidth="137.0" text="Individual Contribution" textFill="#d25e16" />
-            <Label layoutX="132.0" layoutY="275.0" prefHeight="17.0" prefWidth="196.0" text="fundmesavings@gmail.com" textFill="#d25e16" />
+            <Label layoutX="132.0" layoutY="252.0" prefHeight="17.0" prefWidth="196.0" text="fundmesavings@gmail.com" textFill="#d25e16" />
             <Label alignment="CENTER" layoutX="22.0" layoutY="221.0" prefHeight="17.0" prefWidth="416.0" text="Please send your payment via interac transfer to" textFill="#d25e16" />
-            <Button layoutX="190.0" layoutY="328.0" mnemonicParsing="false" onAction="#doneButtonOnAction" text="Done ">
+            <Button layoutX="190.0" layoutY="308.0" mnemonicParsing="false" onAction="#doneButtonOnAction" text="Done ">
                <font>
                   <Font size="10.0" />
                </font></Button>

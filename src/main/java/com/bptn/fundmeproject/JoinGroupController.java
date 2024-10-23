@@ -11,7 +11,11 @@ import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 
 public class JoinGroupController {
-    @FXML
+  
+
+
+	
+	@FXML
     private TextField groupCodeField;  // Text field to enter group code
     @FXML
     private Label groupNameLabel;
@@ -28,6 +32,9 @@ public class JoinGroupController {
     @FXML
     private Label individualContributionLabel;
 
+      
+    
+    
     // Group manager instance to fetch the groups
     private GroupManager groupManager = GroupManager.getInstance();
 

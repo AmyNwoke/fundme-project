@@ -1,6 +1,7 @@
 package com.bptn.fundmeproject;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.bptn.fundmeproject_01_modelling.Group;
 import com.bptn.fundmeproject_01_modelling.GroupManager;
@@ -13,7 +14,9 @@ import javafx.event.ActionEvent;
 
 public class FundSavingsController {
 
-    @FXML
+	
+	
+	@FXML
     private TextField groupCodeField;  // Group code input from user
 
     @FXML
@@ -28,12 +31,6 @@ public class FundSavingsController {
     // Reference to GroupManager singleton (should be initialized with all groups)
     private GroupManager groupManager = GroupManager.getInstance();
 
-
-    @FXML
-    void initialize() {
-        // Initialization code, if needed.
-    }
-
     // Method to handle when user clicks "Done"
     @FXML
     void doneButtonOnAction(ActionEvent event) {
@@ -41,9 +38,14 @@ public class FundSavingsController {
 
         // Find the group by code from the GroupManager
         Group group = groupManager.findGroupByCode(groupCode);
+        
 
         if (group != null) {
-            // Group found, display group name and individual contribution
+        	List<String> members = group.getMembers();
+        	if(!members.contains(App.loggedInUser.getName())) {
+        		 showErrorAlert("You are not a member of this group, try another group or create a new group");
+        	}
+        	// Group found, display group name and individual contribution
             groupNameLabel.setText(group.getGroupName());
             double individualContribution = group.getMonthlySavingsPerMember();
             individualContributionLabel.setText(String.format("$%.2f", individualContribution));
@@ -51,7 +53,13 @@ public class FundSavingsController {
            
             
             // Record user contribution using App.loggedInUser, assuming the user is already logged in
-            groupManager.recordContribution(groupCode, App.loggedInUser.getName(), individualContribution);
+            String message = groupManager.recordContribution(groupCode, App.loggedInUser.getName(), individualContribution);
+            switch (message) {
+    	        case "msg1": showErrorAlert(group.getGroupName() + " has reached it's saving's target. Join or create a new group to keep contributing.");
+    	        return;
+    	        case "msg2": showErrorAlert("You have already contributed to  this group. Join or create a new group to keep contributing.");
+    	        return;
+            }
 
             // Simulate the fund process and show confirmation alert
             showConfirmationAlert();

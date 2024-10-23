@@ -83,6 +83,7 @@ public class UserManager {
     public static User getUserByEmailAndPassword(String email, String password) {
         // Loop through the loaded users and find a match
         for (User user : users) {
+        	System.out.println("user: "+user.getEmail() + "password: "+user.getPassword());
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 return user;  // Return the matching user
             }

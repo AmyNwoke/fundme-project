@@ -11,14 +11,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 
 public class CreateGroupController {
 
-    @FXML
-    private TextField groupNameField;  // Match this with your SceneBuilder fx:id
+	@FXML
+    private TextField groupNameField;  
 
     @FXML
-    private TextField memberCountField;  // Match this with your SceneBuilder fx:id
+    private TextField memberCountField;  
 
     @FXML
     private TextField savingsTargetField;
@@ -32,6 +33,8 @@ public class CreateGroupController {
     @FXML
     private TextField purposeOfSavingField;
 
+    
+    
     // Group Manager to manage the group
     private GroupManager groupManager = GroupManager.getInstance();
 

@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +14,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bptn.fundmeproject.DashboardController">
    <left>
-      <VBox prefHeight="334.0" prefWidth="140.0" style="-fx-border-color: gray; -fx-border-radius: 5px; -fx-border-style: solid; -fx-border-width: 2px; -fx-background-color: white;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="334.0" prefWidth="140.0" style="-fx-border-color: gray; -fx-border-radius: 5px; -fx-border-style: solid; -fx-border-width: 2px; -fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="80.0" fitWidth="136.0">
                <image>
@@ -94,55 +96,65 @@
          </children>
       </VBox>
    </left>
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: ash;" BorderPane.alignment="CENTER">
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="463.0" style="-fx-background-color: ash;" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane layoutX="326.0" layoutY="98.0" prefHeight="61.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
+            <AnchorPane layoutX="14.0" layoutY="78.0" prefHeight="91.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
                <children>
-                  <Label layoutX="14.0" layoutY="5.0" text="Your Total Services " />
-                  <Label layoutX="15.0" layoutY="33.0" text="Your  Savings here " />
+                  <Label layoutX="14.0" layoutY="5.0" text="Target Savings " textFill="#f4501a">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="targetSavingsLabel" layoutX="12.0" layoutY="68.0" text="Target Savings here " />
                </children></AnchorPane>
-            <AnchorPane layoutX="14.0" layoutY="231.0" prefHeight="49.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
+            <Label layoutX="230.0" layoutY="17.0" text="Group Name " />
+            <Label layoutX="230.0" layoutY="34.0" prefHeight="17.0" prefWidth="106.0" text="Group Code  " />
+            <Label fx:id="groupCodeLabel" layoutX="347.0" layoutY="34.0" text="Group Code here  " />
+            <AnchorPane layoutX="313.0" layoutY="77.0" prefHeight="93.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
                <children>
-                  <Label layoutX="7.0" layoutY="14.0" text="Monthly Contribution " />
-                  <Label layoutX="20.0" layoutY="42.0" text="contribution here" />
-               </children></AnchorPane>
-            <AnchorPane layoutX="164.0" layoutY="98.0" prefHeight="62.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
-               <children>
-                  <Label layoutX="11.0" layoutY="5.0" text="Group Total Savings" />
-                  <Label layoutX="12.0" layoutY="33.0" text="Group Savings here " />
-               </children></AnchorPane>
-            <AnchorPane layoutX="14.0" layoutY="98.0" prefHeight="60.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
-               <children>
-                  <Label layoutX="14.0" layoutY="5.0" text="Target Savings " />
-                  <Label layoutX="12.0" layoutY="33.0" text="Target Savings here " />
-               </children></AnchorPane>
-            <AnchorPane layoutX="164.0" layoutY="229.0" prefHeight="50.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
-               <children>
-                  <Label layoutX="25.0" layoutY="14.0" text="Savings Period " />
-                  <Label layoutX="12.0" layoutY="45.0" text="Savings period  here" />
-               </children></AnchorPane>
-            <Label layoutX="361.0" layoutY="51.0" prefHeight="17.0" prefWidth="63.0" text="Hi, Name " />
-            <HBox alignment="CENTER" layoutX="351.0" prefHeight="51.0" prefWidth="83.0">
-               <children>
-                  <ImageView fitHeight="38.0" fitWidth="33.0">
+                  <Label fx:id="totalSavingsLabel" layoutX="20.0" layoutY="67.0" text="Total Savings  here" />
+                  <ImageView fitHeight="24.0" fitWidth="36.0" layoutX="45.0" layoutY="35.0">
                      <image>
-                        <Image url="@../../../../../../../../Pictures/Screenshots/Screenshot%202024-10-19%20214750.png" />
+                        <Image url="@../../../../../../../../Downloads/cash.png" />
                      </image>
                   </ImageView>
-               </children>
-            </HBox>
-            <Label layoutX="21.0" layoutY="26.0" text="Group Name " />
-            <Label layoutX="21.0" layoutY="42.0" prefHeight="17.0" prefWidth="106.0" text="Group Name here " />
-            <Label layoutX="139.0" layoutY="26.0" text="Group Code " />
-            <Label layoutX="139.0" layoutY="42.0" text="Group Code here  " />
-            <AnchorPane layoutX="326.0" layoutY="229.0" prefHeight="50.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
-               <children>
-                  <Label layoutX="25.0" layoutY="14.0" text="Savings Period " />
-                  <Label layoutX="12.0" layoutY="45.0" text="Savings period  here" />
+                  <Label layoutX="10.0" layoutY="5.0" text="Group Total Savings" textFill="#f4501a">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
+            <ImageView fitHeight="24.0" fitWidth="39.0" layoutX="49.0" layoutY="115.0">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/target%20savings.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="groupNameLabel" layoutX="347.0" layoutY="17.0" text="Group Name here " />
+            <AnchorPane layoutX="164.0" layoutY="78.0" prefHeight="91.0" prefWidth="131.0" style="-fx-background-color: white; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-border-width: solid; -fx-border-color: black;">
+               <children>
+                  <Label fx:id="startDateLabel" layoutX="25.0" layoutY="68.0" text="Start Date  here " />
+                  <ImageView fitHeight="29.0" fitWidth="44.0" layoutX="44.0" layoutY="31.0">
+                     <image>
+                        <Image url="@../../../../../../../../Downloads/start%20date.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="14.0" layoutY="5.0" text="Effective Start Date" textFill="#f4501a">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label layoutX="156.0" layoutY="182.0" text="Member Contribution" />
+            <TableView fx:id="contributionTable" layoutX="68.0" layoutY="207.0" prefHeight="139.0" prefWidth="322.0">
+              <columns>
+                <TableColumn fx:id="nameColumnLabel" prefWidth="75.0" text="Name" />
+                <TableColumn fx:id="amountColumnLabel" prefWidth="75.0" text="Amount " />
+                  <TableColumn fx:id="dateColumnLabel" prefWidth="75.0" text=" Date" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
-   </center>
+   </right>
 </BorderPane>

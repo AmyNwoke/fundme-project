@@ -71,7 +71,6 @@ public class Group {
     // Method to add a member to the group
     public void addMember(String memberName) {
         members.add(memberName);  // Add the member to the list
-        membersCount++;  // Increase the members count
     }
 
     public int getMembersCount() {
