@@ -44,38 +44,13 @@ public class EmailManager {
         }
     }
 
-    // Email template for group creation
-    public void sendGroupCreationEmail(String userName, String toEmail, String groupCode) {
-        String subject = "Your Group Has Been Created!";
-        String messageBody = String.format(
-            "Hello %s,\n\nWelcome to FundMeApp!\n" +
-            "Your group has been created. Your group code is %s.\n" +
-            "Share this code with your group members to join.\n\n" +
-            "Happy saving!\nFundMeApp Team",
-            userName, groupCode
-        );
-        sendEmail(toEmail, subject, messageBody);
-    }
-
-    // Email template for joining a group
-    public void sendJoinGroupEmail(String userName, String toEmail, String groupName, double savingsTarget) {
-        String subject = "You Have Successfully Joined a Group!";
-        String messageBody = String.format(
-            "Hello %s,\n\nWelcome to FundMeApp!\n" +
-            "You have successfully joined the group \"%s\".\n" +
-            "You are one step closer to achieving your savings target of $%.2f.\n\n" +
-            "Happy saving!\nFundMeApp Team",
-            userName, groupName, savingsTarget
-        );
-        sendEmail(toEmail, subject, messageBody);
-    }
+    
 
     // Email template for funding savings
     public void sendFundSavingsEmail(String userName, String toEmail, double individualContribution) {
         String subject = "Savings Funded Successfully!";
         String messageBody = String.format(
             "Hello %s,\n\nYou have successfully funded your savings with $%.2f.\n" +
-            "Keep funding every month to achieve your savings target.\n\n" +
             "Happy saving!\nFundMeApp Team",
             userName, individualContribution
         );

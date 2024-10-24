@@ -61,15 +61,12 @@ public class JoinGroupController {
         }
 
         // Add the logged-in user to the group
-        String message = groupManager.addMemberToGroup(group.getGroupCode(), App.loggedInUser.getName());
-        switch (message) {
-	        case "err1": showErrorAlert(group.getGroupName() + " Group is alreay full, join another group.");
-	        return;
-	        case "err2": showErrorAlert(App.loggedInUser.getName() + " is already a member of this group.");
-	        return;
-	        case "err3": showErrorAlert("Group with code " + groupCode + " not found.");
-	        return;
-        }
+        try{
+        	groupManager.addMemberToGroup(group.getGroupCode(), App.loggedInUser.getName());
+        
+	    } catch(Exception ex) {
+	    	showErrorAlert(ex.getMessage());
+	    }
 
         // Update the labels with group details
         groupNameLabel.setText(group.getGroupName());

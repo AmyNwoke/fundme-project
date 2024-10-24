@@ -3,6 +3,7 @@ package com.bptn.fundmeproject;
 import java.io.IOException;
 import java.util.List;
 
+import com.bptn.fundmeproject_01_modelling.EmailManager;
 import com.bptn.fundmeproject_01_modelling.Group;
 import com.bptn.fundmeproject_01_modelling.GroupManager;
 import javafx.fxml.FXML;
@@ -30,6 +31,10 @@ public class FundSavingsController {
 
     // Reference to GroupManager singleton (should be initialized with all groups)
     private GroupManager groupManager = GroupManager.getInstance();
+    
+ // Create an instance of EmailManager to send email
+    private EmailManager emailManager = new EmailManager();
+
 
     // Method to handle when user clicks "Done"
     @FXML
@@ -53,16 +58,19 @@ public class FundSavingsController {
            
             
             // Record user contribution using App.loggedInUser, assuming the user is already logged in
-            String message = groupManager.recordContribution(groupCode, App.loggedInUser.getName(), individualContribution);
-            switch (message) {
-    	        case "msg1": showErrorAlert(group.getGroupName() + " has reached it's saving's target. Join or create a new group to keep contributing.");
-    	        return;
-    	        case "msg2": showErrorAlert("You have already contributed to  this group. Join or create a new group to keep contributing.");
-    	        return;
-            }
+            try{
+            	groupManager.recordContribution(groupCode, App.loggedInUser.getName(), individualContribution);
+            	showConfirmationAlert();
+            	// Send confirmation email
+                String userName = App.loggedInUser.getName();
+                String userEmail = App.loggedInUser.getEmail();  // Assuming App.loggedInUser has an email attribute
+                emailManager.sendFundSavingsEmail(userName, userEmail, individualContribution);
 
-            // Simulate the fund process and show confirmation alert
-            showConfirmationAlert();
+                                    
+            } catch(Exception ex) {
+            	showErrorAlert(ex.getMessage());
+            }
+            
         } else {
             // If group is not found, show error alert
             showErrorAlert("Group not found! Please check the group code.");

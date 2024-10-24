@@ -4,13 +4,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class User {
+	//Define user variables
 	
 	private String name;
 	private String email;
 	private String password;
 	
 	
-
+//create constructor, getter and setters
+	
 	public User(String name, String email, String password) {
 		
 	       
@@ -58,12 +60,12 @@ public class User {
         return true;
     }
 
-    // Static method to check if the password matches the confirmation
+    // writing method to check if password and confirm password is equal 
     public static boolean confirmPassword(String password, String confirmPassword) {
         return password.equals(confirmPassword);
     }
     
-    //email validator
+    //this checks for email format
     private static final String EMAIL_REGEX = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
     public static boolean isValidEmail(String email) {

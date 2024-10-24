@@ -35,10 +35,6 @@ public class GroupManager {
 		return instance;
 	}
 
-	// todo
-	// 4 write test cases -
-	// 5 delete useless classes and methods
-
 	// Method to add a group to the list and save to file, with creator as the first
 	// member
 	public void addGroup(Group group, String creatorName) {
@@ -47,10 +43,10 @@ public class GroupManager {
 		groupList.put(group.getGroupCode(), group); // Add group to ArrayList
 		System.out.println("group size = " + groupList.size() + "\n group enteries = " + groupList);
 		saveToGroupFile();
-		
+
 		SavingsProgress savingsProgress = new SavingsProgress(group.getGroupCode(), group.getSavingsTarget(), 0, 0);
 		savingsProgress.addMember(creatorName);
-		System.out.println("savings progress = "+ savingsProgress.toString());
+		System.out.println("savings progress = " + savingsProgress.toString());
 		savingsProgressMap.put(group.getGroupCode(), savingsProgress);
 		updateGroupSavingsProgress();
 		// saveGroupToFile(group); // Save the group details to the CSV file
@@ -58,41 +54,47 @@ public class GroupManager {
 	}
 
 	// Method to record contributions and save them to the CSV file
-	public String recordContribution(String groupCode, String memberName, double amount) {
+	public void recordContribution(String groupCode, String memberName, double amount) throws Exception {
+		// Load contributions and savings progress from the file if the contribution map
+		// is empty
 		if (contributionMap.isEmpty()) {
 			loadContributionsFromFile();
 			loadSavingsProgressFromFile();
 		}
+
+		// Check if the group's savings target has been reached
 		if (groupSavingsTargetReached(groupCode)) {
-			System.out.println(
-					"The group has reached it's saving's target");
-			return "msg1";
+			throw new Exception("The group has reached its saving's target");
 		}
 
+		// Get the list of contributions for the group
 		List<Contribution> contributionList = contributionMap.get(groupCode);
-		if (contributionList != null  && memberContributionExists(contributionList, memberName)) {
-			System.out.println(
-					"You have met your contribution quota");
-			return "msg2";
+
+		// Check if the member has already contributed
+		if (contributionList != null && memberContributionExists(contributionList, memberName)) {
+			throw new Exception("You have met your contribution quota");
 		} else {
-			if(contributionList == null) {
-				List<Contribution> list = new ArrayList<>();
-				list.add(new Contribution(groupCode, memberName, amount, LocalDate.now().toString()));
-				contributionMap.put(groupCode, list);
-			} else {
-			contributionList.add(new Contribution(groupCode, memberName, amount, LocalDate.now().toString()));
+			// If no contributions exist for this group, create a new list for the group
+			if (contributionList == null) {
+				contributionList = new ArrayList<>(); // Create a new list
+				contributionMap.put(groupCode, contributionList); // Add it to the contribution map
 			}
-			//update savings progress map
+
+			// Add the new contribution to the list
+			contributionList.add(new Contribution(groupCode, memberName, amount, LocalDate.now().toString()));
+
+			// Update the savings progress for the group
 			savingsProgressMap.get(groupCode).updateTotalSavings(amount);
-			System.out.println("savings progress map "+savingsProgressMap);
+			System.out.println("Updated savings progress: " + savingsProgressMap);
+
+			// Save the updated contributions and savings progress to the file
 			saveToContributionFile();
 			updateGroupSavingsProgress();
-			return "success";
 		}
 	}
 
-	private boolean memberContributionExists(List<Contribution> contributionList, String memberName) {
-		if(contributionList == null) {
+	public boolean memberContributionExists(List<Contribution> contributionList, String memberName) {
+		if (contributionList == null) {
 			return false;
 		}
 		for (Contribution contribution : contributionList) {
@@ -161,95 +163,54 @@ public class GroupManager {
 				+ "\n group enteries = " + groupList);
 		return groupList.get(groupCode);
 	}
-	
-	// Method to find a group by group code
-		public Group findGroupForMember(String memberName) {
-			if (groupList.isEmpty()) {
-				loadGroupsFromFile();
-			}
-			List<Group> consolidatedGroupList = groupList.values()
-                    .stream()
-                    .collect(Collectors.toList());
-			
-			for(Group group: consolidatedGroupList) {
-				if(group.getMembers().contains(memberName)) {
-					return group;
-				}
-				
-			}
-			return null;
-		}
 
-	// Updated Method to add a member to a group
-	public String addMemberToGroup(String groupCode, String memberName) {
-		// loadGroupsFromFile(FILE_PATH);
+	// Method to find a group by group code
+	public Group findGroupForMember(String memberName) {
+		if (groupList.isEmpty()) {
+			loadGroupsFromFile();
+		}
+		List<Group> consolidatedGroupList = groupList.values().stream().collect(Collectors.toList());
+
+		for (Group group : consolidatedGroupList) {
+			if (group.getMembers().contains(memberName)) {
+				return group;
+			}
+
+		}
+		return null;
+	}
+
+	public void addMemberToGroup(String groupCode, String memberName) throws Exception {
+		// Find the group by its code
 		Group group = groupList.get(groupCode);
 
-		if (group != null) {
-			if (group.getMembers().size() >= group.getMembersCount()) {
-				System.out.println("Group alreay full, join another group.");
-				return "err1";
-			}
-			// Add the new member if they're not already in the list
-			if (!group.getMembers().contains(memberName)) {
-				group.addMember(memberName);
-				System.out.println("findGroupByCode calls loadGroupsFromFile: group size = " + groupList.size()
-						+ "\n group enteries = " + groupList);
-
-				// Now, rewrite the CSV file with the updated group members list
-				saveToGroupFile();
-				return "success";
-				// saveAllGroupsToFile("groupData.csv");
-			} else {
-				System.out.println(memberName + " is already a member of this group.");
-				return "err2";
-			}
-		} else {
-			System.out.println("Group with code " + groupCode + " not found.");
-			return "err3";
+		// Check if the group exists
+		if (group == null) {
+			throw new Exception("Group with code " + groupCode + " not found.");
 		}
-	}
 
-	// Method to calculate total group savings
-	public double calculateTotalGroupSavings(String groupCode) {
-		double totalSavings = 0.0;
-		// Go through the group contribution file and add up all contributions for the
-		// group
-		try (BufferedReader reader = new BufferedReader(new FileReader(groupCode + "_contributions.txt"))) {
-			String line;
-			while ((line = reader.readLine()) != null) {
-				String[] data = line.split(",");
-				if (data[0].equals("Contribution") && data[1].equals(groupCode)) {
-					totalSavings += Double.parseDouble(data[3]); // Add the contribution amount
-				}
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
+		// Retrieve the group members and check if the group is already full
+		List<String> members = group.getMembers();
+		if (members.size() >= group.getMembersCount()) {
+			throw new Exception("Group is already full, please join another group.");
 		}
-		return totalSavings;
-	}
 
-	// Method to calculate the user's total contribution in a specific group
-	public double calculateUserContribution(String groupCode, String memberName) {
-		double userTotalContribution = 0.0;
-		// Go through the group contribution file and sum up the user's contributions
-		// for the group
-		try (BufferedReader reader = new BufferedReader(new FileReader(groupCode + "_contributions.txt"))) {
-			String line;
-			while ((line = reader.readLine()) != null) {
-				String[] data = line.split(",");
-				if (data[0].equals("Contribution") && data[1].equals(groupCode) && data[2].equals(memberName)) {
-					userTotalContribution += Double.parseDouble(data[3]); // Add user's contribution amount
-				}
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
+		// Check if the member is already in the group
+		if (members.contains(memberName)) {
+			throw new Exception(memberName + " is already a member of this group.");
 		}
-		return userTotalContribution;
+
+		// Add the new member to the group
+		group.addMember(memberName);
+
+		// Save the updated group details to the file
+		saveToGroupFile();
+
+		System.out.println("Member " + memberName + " added to the group successfully.");
 	}
 
 	// Method to load all groups from a file
-	public static void loadGroupsFromFile() {
+	public void loadGroupsFromFile() {
 		System.out.println("loadSavingsProgressFromFile methos");
 
 		File file = new File(FILE_PATH);
@@ -286,22 +247,22 @@ public class GroupManager {
 			e.printStackTrace();
 		}
 	}
+
 	public List<Contribution> getContributionList(String groupCode) {
-		if(contributionMap.isEmpty()) {
+		if (contributionMap.isEmpty()) {
 			loadContributionsFromFile();
 		}
 		return (contributionMap.get(groupCode));
 	}
-	
+
 	public SavingsProgress getTotalSavingsProgressForGroup(String groupCode) {
-		if(savingsProgressMap.isEmpty()) {
+		if (savingsProgressMap.isEmpty()) {
 			loadSavingsProgressFromFile();
 		}
 		return (savingsProgressMap.get(groupCode));
 	}
 
-
-	public static void loadContributionsFromFile() {
+	public void loadContributionsFromFile() {
 		System.out.println("loadSavingsProgressFromFile methos");
 
 		File file = new File(CONTRIBUTION_FILE_PATH);
@@ -323,24 +284,25 @@ public class GroupManager {
 				String currentDate = contributionDetails[3];
 
 				Contribution contribution = new Contribution(groupCode, member, amountContributed, currentDate);
-	            System.out.println("contribution from file : "+contribution.toString());
+				System.out.println("contribution from file : " + contribution.toString());
 
-	            if (contributionMap.containsKey(groupCode)) {
-	                // If the key exists, add the new contribution to the existing list
-	                contributionMap.get(groupCode).add(contribution);
-	            } else {
-	                // If the key does not exist, create a new list, add the contribution, and put it in the map
-	                List<Contribution> newContributionList = new ArrayList<>();
-	                newContributionList.add(contribution);
-	                contributionMap.put(groupCode, newContributionList);
-	            } // Add the contribution to the in-memory list
+				if (contributionMap.containsKey(groupCode)) {
+					// If the key exists, add the new contribution to the existing list
+					contributionMap.get(groupCode).add(contribution);
+				} else {
+					// If the key does not exist, create a new list, add the contribution, and put
+					// it in the map
+					List<Contribution> newContributionList = new ArrayList<>();
+					newContributionList.add(contribution);
+					contributionMap.put(groupCode, newContributionList);
+				} // Add the contribution to the in-memory list
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void loadSavingsProgressFromFile() {
+	public void loadSavingsProgressFromFile() {
 		System.out.println("loadSavingsProgressFromFile methos");
 
 		File file = new File(SAVINGS_PROGRESS_FILE_PATH);
@@ -367,7 +329,7 @@ public class GroupManager {
 				SavingsProgress savingsProgress = new SavingsProgress(groupCode, targetSavings, totalSavings,
 						percentageProgress);
 				savingsProgress.getContributingMembers().addAll(contributingMembers);
-	            System.out.println("savings progress from file: "+savingsProgress.toString());
+				System.out.println("savings progress from file: " + savingsProgress.toString());
 
 				savingsProgressMap.put(groupCode, savingsProgress);
 			}
@@ -375,28 +337,6 @@ public class GroupManager {
 			e.printStackTrace();
 		}
 
-	}
-
-	// Method to check if a group code exists
-	public boolean checkGroupCode(String groupCode) {
-		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
-			String line;
-			reader.readLine();
-			while ((line = reader.readLine()) != null) {
-				// Skip the header line
-				if (line.startsWith("GroupName")) {
-					continue;
-				}
-				String[] groupData = line.split(",");
-				if (groupData.length > 1 && groupData[1].equals(groupCode)) {
-					return true;
-				}
-			}
-		} catch (IOException e) {
-			System.out.println("An error occurred while checking the group code.");
-			e.printStackTrace();
-		}
-		return false;
 	}
 
 	public void saveToGroupFile() {
