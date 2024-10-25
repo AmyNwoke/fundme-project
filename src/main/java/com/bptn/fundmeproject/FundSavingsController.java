@@ -69,11 +69,13 @@ public class FundSavingsController {
                                     
             } catch(Exception ex) {
             	showErrorAlert(ex.getMessage());
+            	return;
             }
             
         } else {
             // If group is not found, show error alert
             showErrorAlert("Group not found! Please check the group code.");
+            return;
         }
     }
 

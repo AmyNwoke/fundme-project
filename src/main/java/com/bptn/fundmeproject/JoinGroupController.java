@@ -66,6 +66,7 @@ public class JoinGroupController {
         
 	    } catch(Exception ex) {
 	    	showErrorAlert(ex.getMessage());
+	    	return;
 	    }
 
         // Update the labels with group details

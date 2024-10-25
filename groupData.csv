@@ -1,6 +1,0 @@
-GroupName,GroupCode,NumOfMembers,TargetAmount,SavingsPeriod,MonthlyContribution,Frequency,StartDate,SavingFor,Members
-trip,385220,2,200.0,1,100.0,Monthly,2024-10-24,vacation,luchi;afarre
-Holiday Fund,GRP001,5,1000.0,12,100.0,monthly,2024-01-01,Vacation,Alice
-Holiday Fund,GRP002,2,1000.0,12,100.0,monthly,2024-01-01,Vacation,Alice;Bob
-Holiday Fund,GRP003,5,100.0,12,10.0,monthly,2024-01-01,Vacation,Alice
-GroupName,groupCode,5,1000.0,12,100.0,monthly,2024-01-01,SavingsGoal,Creator

@@ -13,18 +13,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+
 public class GroupManager {
-	private static Map<String, Group> groupList = new HashMap<>();
-	private static Map<String, List<Contribution>> contributionMap = new HashMap<>();
-	private static Map<String, SavingsProgress> savingsProgressMap = new HashMap<>();
+	private static Map<String, Group> groupList = new HashMap<>(); //declaration of grouplist to save in memory
+	private static Map<String, List<Contribution>> contributionMap = new HashMap<>(); //declaration of contribution list 
+	private static Map<String, SavingsProgress> savingsProgressMap = new HashMap<>();   //declaring savings progress
 	// Singleton instance
+	//creating an instance of group manager 
 	private static GroupManager instance;
 	private static final String FILE_PATH = "groupData.csv";
 	private static final String CONTRIBUTION_FILE_PATH = "contributionData.csv";
 	private static final String SAVINGS_PROGRESS_FILE_PATH = "savingsProgress.csv";
 
 	// Private constructor to prevent instantiation
-	private GroupManager() {
+	private GroupManager() { //ensuring that no other class can create an instance of this class
 	}
 
 	// Static method to return the single instance of GroupManager
@@ -37,18 +39,18 @@ public class GroupManager {
 
 	// Method to add a group to the list and save to file, with creator as the first
 	// member
-	public void addGroup(Group group, String creatorName) {
+	public void addGroup(Group group, String creatorName) { //method declaration to add group
 		// Add the creator as the first member
-		group.addMember(creatorName); // Automatically add the creator to the group as a member
-		groupList.put(group.getGroupCode(), group); // Add group to ArrayList
-		System.out.println("group size = " + groupList.size() + "\n group enteries = " + groupList);
-		saveToGroupFile();
+		group.addMember(creatorName); // calling the add member method Automatically add the creator to the group as a member
+		groupList.put(group.getGroupCode(), group); // // Adding the group to the groupList map, with the group code as the key and the group object as the value
+		System.out.println("group size = " + groupList.size() + "\n group enteries = " + groupList); //printing the current size for debugging
+		saveToGroupFile(); //save the updated list to file
 
-		SavingsProgress savingsProgress = new SavingsProgress(group.getGroupCode(), group.getSavingsTarget(), 0, 0);
-		savingsProgress.addMember(creatorName);
+		SavingsProgress savingsProgress = new SavingsProgress(group.getGroupCode(), group.getSavingsTarget(), 0, 0); //Create a new SavingsProgress object for the group with the initial savings progress
+		savingsProgress.addMember(creatorName); //add the creator of the group as a contributing member to the savings progress
 		System.out.println("savings progress = " + savingsProgress.toString());
-		savingsProgressMap.put(group.getGroupCode(), savingsProgress);
-		updateGroupSavingsProgress();
+		savingsProgressMap.put(group.getGroupCode(), savingsProgress); 
+		updateGroupSavingsProgress(); //update overall progress for all group
 		// saveGroupToFile(group); // Save the group details to the CSV file
 		System.out.println("Group created by " + creatorName + " and added to the group.");
 	}
@@ -77,7 +79,7 @@ public class GroupManager {
 			// If no contributions exist for this group, create a new list for the group
 			if (contributionList == null) {
 				contributionList = new ArrayList<>(); // Create a new list
-				contributionMap.put(groupCode, contributionList); // Add it to the contribution map
+				contributionMap.put(groupCode, contributionList); // Add it to the contribution map groupcode key and contribution list value
 			}
 
 			// Add the new contribution to the list
