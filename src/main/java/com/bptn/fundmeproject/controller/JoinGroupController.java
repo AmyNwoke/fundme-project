@@ -4,6 +4,7 @@ import java.io.IOException;
 import com.bptn.fundmeproject.App;
 
 import com.bptn.fundmeproject.model.Group;
+import com.bptn.fundmeproject.manager.EmailManager;
 import com.bptn.fundmeproject.manager.GroupManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -32,6 +33,8 @@ public class JoinGroupController {
 
 	// Group manager instance to fetch the groups
 	private GroupManager groupManager = GroupManager.getInstance();
+	// Create an object of EmailManager to send email
+	private EmailManager emailManager = new EmailManager();
 
 	// Method to handle Join Group button click
 	@FXML
@@ -58,6 +61,12 @@ public class JoinGroupController {
 		// Add the logged-in user to the group
 		try {
 			groupManager.addMemberToGroup(group.getGroupCode(), App.loggedInUser.getName());
+
+			// Send confirmation email
+			String userName = App.loggedInUser.getName();
+			String userEmail = App.loggedInUser.getEmail();
+			emailManager.sendJoinGroupEmail(userName, userEmail, group.getGroupCode(),
+					group.getMonthlySavingsPerMember());
 
 		} catch (Exception ex) {
 			showErrorAlert(ex.getMessage());
@@ -86,7 +95,7 @@ public class JoinGroupController {
 		alert.showAndWait();
 	}
 
-	//  showing an error alert
+	// showing an error alert
 	private void showErrorAlert(String message) {
 		Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.setTitle("Error");

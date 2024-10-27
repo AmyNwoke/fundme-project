@@ -51,4 +51,29 @@ public class EmailManager {
 				+ "Happy saving!\nFundMeApp Team", userName, individualContribution);
 		sendEmail(toEmail, subject, messageBody);
 	}
+
+	// method to send mail after creating a group, to be called from the controller
+	public void sendGroupCreationEmail(String userName, String toEmail, String groupCode,
+			double individualContribution) {
+		String subject = "Welcome to FundMe Savings!";
+		String messageBody = String.format(
+				"Hello %s,\n\nWelcome to FundMe Savings!\n"
+						+ "You have successfully created a group. Your group code is %s.\n"
+						+ "Give your members the code to join your group. Your individual contribution is $%.2f.\n"
+						+ "Fund your savings via Interac to fundmesavings@gmail.com.\n\nHappy savings!\nFundMeApp Team",
+				userName, groupCode, individualContribution);
+		sendEmail(toEmail, subject, messageBody);
+	}
+
+	// method to send mail after joining a group to be called from the controller
+	public void sendJoinGroupEmail(String userName, String toEmail, String groupCode, double individualContribution) {
+		String subject = "Joined FundMe Group Successfully!";
+		String messageBody = String.format(
+				"Hello %s,\n\nYou have successfully joined a group with code %s.\n"
+						+ "Your individual contribution is $%.2f.\n"
+						+ "Fund your savings via Interac to fundmesavings@gmail.com.\n\nHappy savings!\nFundMeApp Team",
+				userName, groupCode, individualContribution);
+		sendEmail(toEmail, subject, messageBody);
+	}
+
 }

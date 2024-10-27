@@ -5,6 +5,7 @@ import com.bptn.fundmeproject.App;
 import java.time.LocalDate;
 
 import com.bptn.fundmeproject.model.Group;
+import com.bptn.fundmeproject.manager.EmailManager;
 import com.bptn.fundmeproject.manager.GroupManager;
 
 import javafx.event.ActionEvent;
@@ -35,6 +36,8 @@ public class CreateGroupController {
 
 	// Group Manager to manage the group
 	private GroupManager groupManager = GroupManager.getInstance();
+	// Create an object of EmailManager to send email
+	private EmailManager emailManager = new EmailManager();
 
 	@FXML
 	void createGroupButtonOnAction(ActionEvent event) {
@@ -91,8 +94,13 @@ public class CreateGroupController {
 		// member
 		try {
 			groupManager.addGroup(newGroup, App.loggedInUser.getName());
+			// Send confirmation email
+			String userName = App.loggedInUser.getName();
+			String userEmail = App.loggedInUser.getEmail();
+			emailManager.sendGroupCreationEmail(userName, userEmail, newGroup.getGroupCode(),
+					newGroup.getMonthlySavingsPerMember());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			showErrorAlert(e.getMessage());
 			return;
 		}
