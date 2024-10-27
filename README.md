@@ -24,10 +24,11 @@ LIBRARIES AND FRAMEWORKS:
 
 KEY CONCEPTS AND CODING TOPICS EMPLOYED:
 **OOP Principles**: Encapsulation, inheritance, and abstraction are applied to organize the project into manageable classes (e.g., User, Group, GroupManager).
-**Singleton Design Pattern:** Ensures only one instance of GroupManager exist, which centralizes data handling.
+**Singleton Design Pattern:** Ensures only one instance of GroupManager exists, which centralizes data handling.
 **SOLID Principles:** The Single Responsibility and Dependency Inversion principles are applied to separate responsibilities among classes and improve modularity.
 **Functional Programming:** Utilizes Java streams, lambdas, and method references for efficient data filtering and transformation.
 **Error Handling**: Catches and handles IO and format errors during file read/write operations, and provides user feedback on incorrect inputs.
+****JUnit Test****: Tested some of the methods like writing and reading from file 
 
 
 ![flowchartFM](https://github.com/user-attachments/assets/c596051d-c40e-4f34-8e5d-b7ee0066e829)
