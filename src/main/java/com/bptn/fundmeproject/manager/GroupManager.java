@@ -20,7 +20,8 @@ public class GroupManager {
 																			// instance of this class
 	}
 
-	// Static method to return the single instance of GroupManager
+	// Static method to provide access and return the single instance of
+	// GroupManager
 	public static GroupManager getInstance() {
 		if (instance == null) {
 			instance = new GroupManager();
@@ -33,15 +34,17 @@ public class GroupManager {
 		savingsContributionService.initializeSavingsProgress(group, creatorName);
 	}
 
+	// calling method to find group by code
 	public Group findGroupByCode(String groupCode) {
 		return groupService.findGroupByCode(groupCode);
 	}
 
-	// Method to find a group by group code
+	// Method to find member group
 	public Group findGroupForMember(String memberName) {
 		return groupService.findGroupForMember(memberName);
 	}
 
+	// call the addmember to group from the controller to add a member
 	public void addMemberToGroup(String groupCode, String memberName) throws Exception {
 		groupService.addMemberToGroup(groupCode, memberName);
 	}
@@ -51,12 +54,12 @@ public class GroupManager {
 		savingsContributionService.recordContribution(groupCode, memberName, amount);
 	}
 
-	// used by dashboard
+	// used by dashboard to get the list of contribution
 	public List<Contribution> getContributionList(String groupCode) {
 		return savingsContributionService.getContributionList(groupCode);
 	}
 
-	// used by dashboard
+	// used by dashboard to display the total savings progress
 	public SavingsProgress getTotalSavingsProgressForGroup(String groupCode) {
 		return savingsContributionService.getTotalSavingsProgressForGroup(groupCode);
 	}

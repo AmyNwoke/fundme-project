@@ -3,9 +3,9 @@ package com.bptn.fundmeproject.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SavingsProgress extends GroupEntity  {
+public class SavingsProgress extends GroupEntity {
 
-	//private String groupCode;
+	// private String groupCode;
 	private double targetSavings;
 	private double totalSavings;
 	private double percentageProgress;
@@ -13,20 +13,12 @@ public class SavingsProgress extends GroupEntity  {
 
 	public SavingsProgress(String groupCode, double targetSavings, double totalSavings, double percentageProgress) {
 		super(groupCode); //
-		//this.groupCode = groupCode;
+		// this.groupCode = groupCode;
 		this.targetSavings = targetSavings;
 		this.totalSavings = totalSavings;
 		this.percentageProgress = percentageProgress;
 		this.contributingMembers = new ArrayList<>();
 	}
-
-//	public String getGroupCode() {
-	//	return groupCode;
-	//}
-
-	//public void setGroupCode(String groupCode) {
-		//this.groupCode = groupCode;
-	//}
 
 	public double getTargetSavings() {
 		return targetSavings;

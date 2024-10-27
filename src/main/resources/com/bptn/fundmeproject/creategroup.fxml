@@ -125,12 +125,17 @@
                <font>
                   <Font size="10.0" />
                </font></Button>
-            <Label alignment="CENTER" layoutX="49.0" layoutY="41.0" prefHeight="20.0" prefWidth="309.0" text="Enter the required information to create a group" textFill="#0d0d0d">
+            <Label alignment="CENTER" layoutX="55.0" layoutY="31.0" prefHeight="20.0" prefWidth="309.0" text="Enter the required information to create a group" textFill="#0d0d0d">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
             <TextField fx:id="purposeOfSavingField" layoutX="213.0" layoutY="259.0" prefHeight="25.0" prefWidth="182.0" promptText="Example vacation" />
+            <Label layoutX="103.0" layoutY="51.0" text="Please note that you can only belong to a group">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

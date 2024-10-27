@@ -28,10 +28,10 @@ public class FundSavingsController {
 	@FXML
 	private Button doneButton; // Done button
 
-	// Reference to GroupManager singleton (should be initialized with all groups)
+	// making reference to GroupManager instance
 	private GroupManager groupManager = GroupManager.getInstance();
 
-	// Create an instance of EmailManager to send email
+	// Create an object of EmailManager to send email
 	private EmailManager emailManager = new EmailManager();
 
 	// Method to handle when user clicks "Done"
@@ -56,14 +56,12 @@ public class FundSavingsController {
 			// Record user contribution using App.loggedInUser, assuming the user is already
 			// logged in
 			try {
-				
-							
-				
+
 				groupManager.recordContribution(groupCode, App.loggedInUser.getName(), individualContribution);
 				showConfirmationAlert();
 				// Send confirmation email
 				String userName = App.loggedInUser.getName();
-				String userEmail = App.loggedInUser.getEmail(); // Assuming App.loggedInUser has an email attribute
+				String userEmail = App.loggedInUser.getEmail();
 				emailManager.sendFundSavingsEmail(userName, userEmail, individualContribution);
 
 			} catch (Exception ex) {

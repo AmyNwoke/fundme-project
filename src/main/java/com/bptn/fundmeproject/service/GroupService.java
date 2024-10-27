@@ -60,7 +60,7 @@ public class GroupService {
 
 	// method to find the group that a specific member belongs to
 	// used in dashboard controller
-	public Group findGroupForMember(String memberName) {
+	/*public Group findGroupForMember(String memberName) {
 		if (groupMap.isEmpty()) {
 			loadFromFile();
 		}
@@ -77,6 +77,18 @@ public class GroupService {
 
 		}
 		return null;
+	}
+*/
+	
+	public Group findGroupForMember(String memberName) {
+	    if (groupMap.isEmpty()) {
+	        loadFromFile();
+	    }
+
+	    return groupMap.values().stream()
+	        .filter(group -> group.getMembers().contains(memberName)) // Lambda to check member presence
+	        .findFirst()  //finds the first group with member name
+	        .orElse(null); // Returns the first matching group or null if none found
 	}
 
 	public boolean isMemberInAnyGroup(String memberName) {

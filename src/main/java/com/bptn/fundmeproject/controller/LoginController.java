@@ -23,7 +23,7 @@ public class LoginController {
 	private void loginButtonOnAction() {
 		String email = userEmail.getText().trim();
 		String password = userPassword.getText();
-		
+
 		// Fetch the full User object using the email and password
 		User user = UserManager.getUserByEmailAndPassword(email, password);
 

@@ -17,46 +17,42 @@ import javafx.scene.control.TextField;
 public class SignupController {
 	@FXML
 	private TextField fullName;
-	
+
 	@FXML
-    private TextField userEmail;
+	private TextField userEmail;
 
-    @FXML
-    private PasswordField userPassword;
+	@FXML
+	private PasswordField userPassword;
 
-    @FXML
-    private PasswordField userPasswordConfirm;
-    
-    @FXML
-    private Label errorLabel;
+	@FXML
+	private PasswordField userPasswordConfirm;
 
-    @FXML
-    void switchToLoginOnAction(ActionEvent event) throws IOException {
-    	App.setRoot("login");
-    }
-	
+	@FXML
+	private Label errorLabel;
+
+	@FXML
+	void switchToLoginOnAction(ActionEvent event) throws IOException {
+		App.setRoot("login");
+	}
+
+	// set fields and validate user input
 	@FXML
 	void signUpButtonOnAction(ActionEvent event) {
 		String name = fullName.getText().trim();
 		String email = userEmail.getText().trim();
 		String password = userPassword.getText();
 		String password2 = userPasswordConfirm.getText();
-		if(!User.isValidEmail(email)) {
+		if (!User.isValidEmail(email)) {
 			showErrorAlert("Enter a valid email.");
-		}
-		else if(UserManager.emailExists(email)) {
+		} else if (UserManager.emailExists(email)) {
 			showErrorAlert("User already exists, proceed to login.");
-		}
-		else if (!User.confirmPassword(password, password2)) {
+		} else if (!User.confirmPassword(password, password2)) {
 			showErrorAlert("Your password fields must match!");
-		}
-		else if(!User.passwordValid(password)) {
+		} else if (!User.passwordValid(password)) {
 			showErrorAlert("Your password should have more than 7 char.");
-		}
-		else if(name.isEmpty()) {
+		} else if (name.isEmpty()) {
 			showErrorAlert("Please fill all the fields!");
-		}
-		else {			
+		} else {
 			User user = new User(name, email, password);
 			UserManager.saveUserToFile(user);
 			try {
@@ -67,8 +63,6 @@ public class SignupController {
 		}
 	}
 
-	
-	
 	private void showErrorAlert(String message) {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Error");

@@ -9,12 +9,13 @@ import java.util.List;
 import com.bptn.fundmeproject.model.User;
 
 public class UserManager {
-
+	// user list of type user
 	private static List<User> users = new ArrayList<>(); // List to store all registered users
 
 	public static void loadUsersFromFile(String filename) {
-		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {// automatically close resource
 			String line;
+			// read line till there are no more line to be read
 			while ((line = reader.readLine()) != null) {
 				line = line.trim(); // Remove leading and trailing whitespace
 				if (line.isEmpty()) {
@@ -62,7 +63,7 @@ public class UserManager {
 		}
 	}
 
-	// Simulated method to retrieve a user by email and password
+	// method to retrieve a user by email and password
 	public static User getUserByEmailAndPassword(String email, String password) {
 		// Loop through the loaded users and find a match
 		for (User user : users) {

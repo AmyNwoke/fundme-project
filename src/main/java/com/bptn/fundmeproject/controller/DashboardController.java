@@ -46,11 +46,12 @@ public class DashboardController {
 	public void initialize() {
 		groupManager = GroupManager.getInstance();
 
-		// Set up the table columns to match the Contribution class fields
+		// Setting up the table columns to match the Contribution class fields
 		nameColumnLabel.setCellValueFactory(new PropertyValueFactory<>("member"));
 		amountColumnLabel.setCellValueFactory(new PropertyValueFactory<>("amountContributed"));
 		dateColumnLabel.setCellValueFactory(new PropertyValueFactory<>("currentDate"));
 
+		// load group details of currently loggedin user if user belong to a group
 		Group group = groupManager.findGroupForMember(App.loggedInUser.getName());
 		if (group != null) {
 			String groupCode = group.getGroupCode();
@@ -61,7 +62,8 @@ public class DashboardController {
 
 	}
 
-	// Method to load and display the group details in labels
+	// Method to load and display the group details
+	// setting the labels to display the actual details
 	private void loadGroupDetails(Group group) {
 		System.out.println("group: " + group.getGroupCode());
 
