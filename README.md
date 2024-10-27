@@ -91,6 +91,7 @@ Group details.
 List of member contributions.
 Total and target savings
 
+![flowchartFM](https://github.com/user-attachments/assets/c596051d-c40e-4f34-8e5d-b7ee0066e829)
 
 
 
