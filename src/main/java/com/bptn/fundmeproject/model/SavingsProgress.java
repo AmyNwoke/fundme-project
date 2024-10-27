@@ -56,7 +56,7 @@ public class SavingsProgress extends GroupEntity  {
 		return percentageProgress;
 	}
 
-	public void calculatePercentage(double percentageProgress) {
+	public void calculatePercentage() {
 		this.percentageProgress = (this.totalSavings / this.targetSavings) * 100;
 	}
 

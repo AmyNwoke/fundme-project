@@ -111,9 +111,9 @@
                </font>
             </Label>
             <TextField fx:id="groupCodeField" alignment="CENTER" layoutX="135.0" layoutY="86.0" promptText="Group Code" />
-            <Label fx:id="groupNameLabel" layoutX="210.0" layoutY="138.0" prefHeight="17.0" prefWidth="183.0" text="Group Name goes here " textFill="#00000020" />
+            <Label fx:id="groupNameLabel" layoutX="210.0" layoutY="138.0" prefHeight="17.0" prefWidth="183.0" text="Group Name goes here" textFill="#1c1b1bb1" />
             <Label layoutX="14.0" layoutY="138.0" prefHeight="17.0" prefWidth="137.0" text="Group Name" textFill="#d25e16" />
-            <Label fx:id="individualContributionLabel" layoutX="210.0" layoutY="169.0" prefHeight="17.0" prefWidth="183.0" text="Individual contribution goes here " textFill="#0000001c" />
+            <Label fx:id="individualContributionLabel" layoutX="210.0" layoutY="169.0" prefHeight="17.0" prefWidth="183.0" text="Individual contribution goes here " textFill="#00000094" />
          </children>
       </AnchorPane>
    </center>

@@ -61,6 +61,7 @@ public class SavingsContributionService {
 
 			// Update the savings progress for the group
 			savingsProgressMap.get(groupCode).updateTotalSavings(amount);
+			savingsProgressMap.get(groupCode).calculatePercentage();
 			System.out.println("Updated savings progress: " + savingsProgressMap);
 
 			// Save the updated contributions and savings progress to the file
