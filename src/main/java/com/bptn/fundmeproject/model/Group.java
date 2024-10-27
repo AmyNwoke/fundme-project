@@ -3,7 +3,7 @@ package com.bptn.fundmeproject.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Group  {
+public class Group {
 	private String groupName;
 	private int membersCount;
 	private double savingsTarget;

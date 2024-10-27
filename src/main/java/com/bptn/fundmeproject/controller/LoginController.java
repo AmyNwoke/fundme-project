@@ -29,7 +29,7 @@ public class LoginController {
 
 		// If user is null, it means no matching user was found
 		if (user == null) {
-			showErrorAlert("Username or password is incorrect!");
+			showErrorAlert("email or password is incorrect!");
 		} else {
 			// Set the logged-in user and switch to dashboard
 			try {
