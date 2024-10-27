@@ -100,9 +100,11 @@ Total and target savings
                                              ** USER STORY AND ACCEPTANCE CRITERIA**
 
 1. User Signup
-User Story
+*
+***User Story****
 As a new user, I want to sign up with my name, email, and password so that I can create or join savings groups.
-Acceptance Criteria
+
+**Acceptance Criteria**
 Given I am a new user when I enter my name, valid email, and password, then I should be able to successfully create an account.
 Given my email is already registered when I try to sign up, then I should receive a message stating that the email is already in use.
 Given I enter a password that does not meet requirements (e.g., too short) when I try to sign up, then I should receive a message detailing the password requirements.
