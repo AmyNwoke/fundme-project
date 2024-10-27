@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bptn.fundmeproject.CreateGroupController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bptn.fundmeproject.controller.CreateGroupController">
    <left>
       <VBox prefHeight="334.0" prefWidth="140.0" style="-fx-border-color: #B2BEB5; -fx-border-radius: 5px; -fx-border-style: solid; -fx-border-width: 2px; -fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
          <children>
@@ -97,7 +97,7 @@
       </VBox>
    </left>
    <center>
-      <AnchorPane prefHeight="400.0" prefWidth="460.0" style="-fx-background-color: #B2BEB5;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="400.0" prefWidth="460.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" layoutX="351.0" prefHeight="51.0" prefWidth="83.0">
                <children>

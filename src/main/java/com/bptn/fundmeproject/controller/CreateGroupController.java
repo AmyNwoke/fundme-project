@@ -1,17 +1,17 @@
-package com.bptn.fundmeproject;
+package com.bptn.fundmeproject.controller;
 
 import java.io.IOException;
+import com.bptn.fundmeproject.App;
 import java.time.LocalDate;
 
-import com.bptn.fundmeproject_01_modelling.Group;
-import com.bptn.fundmeproject_01_modelling.GroupManager;
+import com.bptn.fundmeproject.model.Group;
+import com.bptn.fundmeproject.manager.GroupManager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 
 public class CreateGroupController {
 
@@ -40,6 +40,12 @@ public class CreateGroupController {
 
     @FXML
     void createGroupButtonOnAction(ActionEvent event) {
+    	// Check if loggedInUser is available in App class
+        if (App.loggedInUser == null) {
+            showErrorAlert("User not logged in!");
+            return;
+        }
+
         // Retrieve the form inputs
         String groupName = groupNameField.getText().trim();
         String memberCountStr = memberCountField.getText().trim();
@@ -69,21 +75,31 @@ public class CreateGroupController {
             showErrorAlert("Please ensure Member Count, Savings Target, and Savings Period are valid numbers.");
             return;
         }
-
-        // Check if loggedInUser is available in App class
-        if (App.loggedInUser == null) {
-            showErrorAlert("User not logged in!");
+        
+        //check if the number is negative
+        
+        if(isNumberNegative(memberCount, savingsTarget, savingsPeriod)) {
+        	showErrorAlert("Please ensure Member Count, Savings Target, and Savings Period are all positive numbers.");
             return;
         }
+        
+        
 
-        // Create new group and add it to the group manager
+        
+        // Create new group and call addGroup method in group manager
         String groupCode = generateGroupCode();  // Call method to generate group code
         Group newGroup = new Group(groupName, memberCount, savingsTarget, savingsPeriod,
                 savingsFrequency, startDate.toString(), purpose, groupCode,
-                savingsTarget / savingsPeriod / memberCount);
+                (savingsTarget / savingsPeriod / memberCount));
 
-        // Add group to GroupManager and include the creator as the first member
-        groupManager.addGroup(newGroup, App.loggedInUser.getName());
+        // call addGroup method in group manager and include the creator as the first member
+        try {
+			groupManager.addGroup(newGroup, App.loggedInUser.getName());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			showErrorAlert(e.getMessage());
+            return;
+		}
 
         // Show success message without the fund button
         showSuccessAlert(groupCode);
@@ -122,6 +138,15 @@ public class CreateGroupController {
     private String generateGroupCode() {
         return String.valueOf((int) (Math.random() * 900000) + 100000);  // 6-digit random number
     }
+    
+ // Method to validate only positive number entries
+    private boolean isNumberNegative(int member, double target, int period) {
+    	if(member <= 0 || target <= 0 || period <= 0) {
+    		return true;
+    	}// 6-digit random number
+    	return false;
+    }
+
 
     @FXML
     void switchTojoinGroupOnAction(ActionEvent event) throws IOException {

@@ -1,24 +1,16 @@
-package com.bptn.fundmeproject_01_modelling;
+package com.bptn.fundmeproject.model;
 
-public class Contribution {
-	private String groupCode;
+public class Contribution extends GroupEntity {
+
 	private String member;
 	private double amountContributed;
 	private String currentDate;
 
 	public Contribution(String groupCode, String member, double amountContributed, String currentDate) {
-		this.groupCode = groupCode;
+		super(groupCode); //
 		this.member = member;
 		this.amountContributed = amountContributed;
 		this.currentDate = currentDate;
-	}
-
-	public String getGroupCode() {
-		return groupCode;
-	}
-
-	public void setGroupCode(String groupCode) {
-		this.groupCode = groupCode;
 	}
 
 	public String getMember() {

@@ -1,9 +1,10 @@
-package com.bptn.fundmeproject;
+package com.bptn.fundmeproject.controller;
 
 import java.io.IOException;
+import com.bptn.fundmeproject.App;
 
-import com.bptn.fundmeproject_01_modelling.Group;
-import com.bptn.fundmeproject_01_modelling.GroupManager;
+import com.bptn.fundmeproject.model.Group;
+import com.bptn.fundmeproject.manager.GroupManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;

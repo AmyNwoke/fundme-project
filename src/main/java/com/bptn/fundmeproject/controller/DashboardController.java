@@ -1,12 +1,11 @@
-package com.bptn.fundmeproject;
+package com.bptn.fundmeproject.controller;
 
 import java.io.IOException;
+import com.bptn.fundmeproject.App;
 import java.util.List;
 
-import com.bptn.fundmeproject_01_modelling.Contribution;
-import com.bptn.fundmeproject_01_modelling.Group;
-import com.bptn.fundmeproject_01_modelling.GroupManager;
-import com.bptn.fundmeproject_01_modelling.SavingsProgress;
+import com.bptn.fundmeproject.model.*;
+import com.bptn.fundmeproject.manager.GroupManager;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;

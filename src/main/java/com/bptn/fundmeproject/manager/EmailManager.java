@@ -1,4 +1,4 @@
-package com.bptn.fundmeproject_01_modelling;
+package com.bptn.fundmeproject.manager;
 
 import java.util.Properties;
 

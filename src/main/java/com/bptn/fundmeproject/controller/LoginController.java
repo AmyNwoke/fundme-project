@@ -1,9 +1,10 @@
-package com.bptn.fundmeproject;
+package com.bptn.fundmeproject.controller;
 
 import java.io.IOException;
+import com.bptn.fundmeproject.App;
 
-import com.bptn.fundmeproject_01_modelling.User;
-import com.bptn.fundmeproject_01_modelling.UserManager;
+import com.bptn.fundmeproject.model.User;
+import com.bptn.fundmeproject.manager.UserManager;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
