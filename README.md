@@ -29,6 +29,11 @@ KEY CONCEPTS AND CODING TOPICS EMPLOYED:
 **Functional Programming:** Utilizes Java streams, lambdas, and method references for efficient data filtering and transformation.
 **Error Handling**: Catches and handles IO and format errors during file read/write operations, and provides user feedback on incorrect inputs.
 
+
+![flowchartFM](https://github.com/user-attachments/assets/c596051d-c40e-4f34-8e5d-b7ee0066e829)
+
+
+
 PROJECT WORKFLOW (Pseudo-Code)
 **Initialization**
 Load User Data from CSV file into UserManager.
@@ -90,10 +95,5 @@ Fetch and display:
 Group details.
 List of member contributions.
 Total and target savings
-
-![flowchartFM](https://github.com/user-attachments/assets/c596051d-c40e-4f34-8e5d-b7ee0066e829)
-
-
-
 
 
