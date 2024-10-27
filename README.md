@@ -100,6 +100,7 @@ Total and target savings
                                              ** USER STORY AND ACCEPTANCE CRITERIA**
 
 
+
 1. User Signup
 **User Story**
 As a new user, I want to sign up with my name, email, and password so that I can create or join savings groups.
@@ -117,7 +118,7 @@ As a user, I want to log in with my email and password so that I can access my g
 Given I have an account when I enter the correct email and password, then I should be able to log in and access the main menu.
 Given I enter an incorrect email or password when I try to log in, then I should receive an error message stating that the credentials are incorrect.
 
-4. Create Group
+3. Create Group
 **User Story**
 As a logged-in user, I want to create a savings group by specifying the group name, target savings, member count, frequency, start date, and purpose so that I can invite others to save with me.
 
@@ -126,7 +127,7 @@ Given I am logged in when I fill in all required group details with valid inform
 Given I leave any required field empty or enter invalid data (e.g., negative target savings) when I try to create a group, then I should receive an error message specifying which fields need correction.
 Given I successfully create a group when the group is created, then I should be added as the first member automatically.
 
-5. Join Group
+4. Join Group
 **User Story**
 As a user, I want to join an existing savings group using a unique group code so that I can contribute towards a shared financial goal.
 
@@ -136,7 +137,7 @@ Given I am already part of a group when I try to join another group using a vali
 Given I enter an invalid group code when I try to join a group, then I should see an error message indicating the group code is incorrect or does not exist.
 Given the group I try to join has already reached its maximum member count when I enter the code, then I should see an error message indicating the group is full.
 
-6. Fund Savings
+5. Fund Savings
 **User Story**
 As a group member, I want to contribute funds towards the group’s savings goal so that I can help achieve the target amount.
 
@@ -146,7 +147,7 @@ Given I try to contribute more than the group’s target savings when I submit t
 Given I have already made a contribution for the current period when I try to contribute again, then I should receive an error message indicating that I have already met my contribution quota.
 Given my contribution is successfully recorded when it is saved, then I should receive a confirmation email indicating the contribution was successful.
 
-7. View Group Dashboard
+6. View Group Dashboard
 **User Story**
 As a group member, I want to view my group’s dashboard so that I can see the group’s savings progress and each member’s contributions.
 
@@ -155,7 +156,7 @@ Given I am logged in and a member of a group when I navigate to the dashboard, t
 Given there are multiple contributions in the group when I view the dashboard, then I should see a list of member contributions, including each member’s name, amount contributed, and date.
 Given the group has not yet received any contributions when I view the dashboard, then I should not see any contributions
 
-8. Email Notification for Savings Contribution
+7. Email Notification for Savings Contribution
 **User Story**
 As a user who has contributed to a group’s savings, I want to receive a confirmation email so that I can have a record of my contribution.
 
