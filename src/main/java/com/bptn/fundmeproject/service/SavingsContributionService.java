@@ -16,7 +16,7 @@ public class SavingsContributionService {
 	private static final String SAVINGS_PROGRESS_FILE_PATH = "savingsProgress.csv";
 	private Map<String, SavingsProgress> savingsProgressMap = new HashMap<>();
 
-	// used to create a new savingsprogress entry for the group
+	// used to create a new savings progress entry for the group
 	// add member to the group progress
 
 	public void initializeSavingsProgress(Group group, String memberName) {
@@ -70,21 +70,23 @@ public class SavingsContributionService {
 		}
 	}
 
-	// this methos checks if a member has made a contribution
+	// this method checks if a member has made a contribution
+	/*
+	 * public boolean memberContributionExists(List<Contribution> contributionList,
+	 * String memberName) { if (contributionList == null) { return false; } for
+	 * (Contribution contribution : contributionList) { if (contribution.getMember()
+	 * == memberName) { return true; } }
+	 * 
+	 * return false; }
+	 */
+         //this method checks if a member's contribution exist
 	public boolean memberContributionExists(List<Contribution> contributionList, String memberName) {
-		if (contributionList == null) {
-			return false;
-		}
-		for (Contribution contribution : contributionList) {
-			if (contribution.getMember() == memberName) {
-				return true;
-			}
-		}
-
-		return false;
+		return contributionList != null
+				// Lambda is used here to match member name
+				&& contributionList.stream().anyMatch(contribution -> contribution.getMember().equals(memberName));
 	}
 
-//this method ensures than we cant save more than the set target
+//this method ensures than we can't save more than the set target
 	private boolean groupSavingsTargetReached(String groupCode) {
 		SavingsProgress savingsProgress = savingsProgressMap.get(groupCode);
 		if (savingsProgress != null) {
