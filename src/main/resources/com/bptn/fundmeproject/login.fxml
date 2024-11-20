@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,52 +13,65 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bptn.fundmeproject.controller.LoginController">
    <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="190.0" fitWidth="223.0" layoutX="-2.0" layoutY="155.0">
+            <ImageView fitHeight="100.0" fitWidth="61.0" layoutX="25.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@fundme.jpg" />
+                  <Image url="@fund%20happy%20man.jpeg" />
                </image>
-            </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="152.0" fitWidth="224.0">
+               <effect>
+                  <InnerShadow radius="18.2725" width="54.09" />
+               </effect></ImageView>
+            <ImageView fitHeight="150.0" fitWidth="133.0" layoutX="25.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@WhatsApp%20Image%202024-10-16%20at%201.03.58%20AM.jpeg" />
+                  <Image url="@fundmelogo.PNG" />
+               </image></ImageView>
+            <ImageView fitHeight="57.0" fitWidth="59.0" layoutX="114.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@fund%20happyfamily.jpeg" />
                </image>
+               <effect>
+                  <InnerShadow radius="17.785" width="52.14" />
+               </effect>
             </ImageView>
          </children>
       </AnchorPane>
    </left>
-   <right>
+   <center>
       <AnchorPane prefHeight="349.0" prefWidth="381.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="139.0" fitWidth="172.0" layoutX="28.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="169.0" layoutY="21.0">
-               <image>
-                  <Image url="@padlock.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="15.0" layoutY="126.0" prefHeight="20.0" prefWidth="94.0" text="Email" textFill="#e47e2a">
+            <Label layoutX="103.0" layoutY="106.0" prefHeight="20.0" prefWidth="94.0" text="Email" textFill="#161616">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font size="10.0" />
                </font>
             </Label>
-            <Label layoutX="6.0" layoutY="162.0" prefHeight="20.0" prefWidth="94.0" text="Password" textFill="#e47e2a">
+            <Label layoutX="103.0" layoutY="161.0" prefHeight="20.0" prefWidth="94.0" text="Password" textFill="#161616">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font size="10.0" />
                </font>
             </Label>
-            <TextField fx:id="userEmail" layoutX="152.0" layoutY="126.0" prefHeight="25.0" prefWidth="201.0" />
-            <PasswordField fx:id="userPassword" layoutX="151.0" layoutY="162.0" prefHeight="25.0" prefWidth="204.0" />
-            <Button layoutX="154.0" layoutY="217.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="200.0" text="Login" />
+            <TextField fx:id="userEmail" layoutX="99.0" layoutY="126.0" prefHeight="25.0" prefWidth="223.0" />
+            <PasswordField fx:id="userPassword" layoutX="98.0" layoutY="181.0" prefHeight="25.0" prefWidth="225.0" />
+            <Button layoutX="100.0" layoutY="244.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="223.0" style="-fx-background-color: #000000; -fx-text-fill: #ffffff;" text="Login">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font></Button>
             <Label fx:id="errorLabel" layoutX="67.0" layoutY="60.0" textFill="#db1616" />
-            <Label layoutX="150.0" layoutY="274.0" prefHeight="17.0" prefWidth="187.0" text="Don't have an account?" />
-            <Button layoutX="299.0" layoutY="270.0" mnemonicParsing="false" onAction="#switchToSignupOnAction" text="Sign up" />
+            <Label layoutX="124.0" layoutY="286.0" prefHeight="17.0" prefWidth="187.0" text="Don't have an account?">
+               <font>
+                  <Font size="8.0" />
+               </font></Label>
+            <Button layoutX="224.0" layoutY="284.0" mnemonicParsing="false" onAction="#switchToSignupOnAction" prefHeight="9.0" prefWidth="53.0" style="-fx-background-color: #000000; -fx-text-fill: #ffffff;" text="Sign up">
+               <font>
+                  <Font name="System Bold" size="8.0" />
+               </font></Button>
+            <Label layoutX="141.0" layoutY="42.0" text="Welcome Back!">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-   </right>
-   <center>
-      <Label text="Label" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

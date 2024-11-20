@@ -1,18 +1,93 @@
 package com.bptn.fundmeproject.manager;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import com.bptn.fundmeproject.utility.DatabaseConnectionF;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+
 import com.bptn.fundmeproject.model.User;
 
 public class UserManager {
 	// user list of type user
 	private static List<User> users = new ArrayList<>(); // List to store all registered users
 
-	public static void loadUsersFromFile(String filename) {
+	// Method to load users from the database instead of a file
+    public static void loadUsersFromFile() {
+        String sql = "SELECT name, email, password FROM \"USERS\"";
+        try (Connection conn = DatabaseConnectionF.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+            users.clear(); // Clear the list to avoid duplicates
+            while (rs.next()) {
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                users.add(new User(name, email, password));
+            }
+            System.out.println("Users loaded successfully from the database.");
+        } catch (SQLException e) {
+            System.out.println("Error loading users from the database.");
+            e.printStackTrace();
+        }
+    }
+
+    // Method to check if an email already exists in the database
+    public static boolean emailExists(String email) {
+        String sql = "SELECT email FROM \"USERS\" WHERE email = ?";
+        try (Connection conn = DatabaseConnectionF.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, email);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                return rs.next(); // Returns true if email is found
+            }
+        } catch (SQLException e) {
+            System.out.println("Error checking if email exists.");
+            e.printStackTrace();
+        }
+        return false; // Return false if email is not found or if an error occurs
+    }
+
+    // Method to save a new user to the database instead of a file
+    public static void saveUserToFile(User user) {
+        String sql = "INSERT INTO \"USERS\" (name, email, password) VALUES (?, ?, ?)";
+        try (Connection conn = DatabaseConnectionF.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, user.getName());
+            pstmt.setString(2, user.getEmail());
+            pstmt.setString(3, user.getPassword());
+            pstmt.executeUpdate();
+            users.add(user); // Add the user to the in-memory list as well
+            System.out.println("User saved successfully to the database.");
+        } catch (SQLException e) {
+            System.out.println("An error occurred while saving the user to the database.");
+            e.printStackTrace();
+        }
+    }
+    // Method to retrieve a user by email and password from the database
+    public static User getUserByEmailAndPassword(String email, String password) {
+        String sql = "SELECT name, email, password FROM \"USERS\" WHERE email = ? AND password = ?";
+        try (Connection conn = DatabaseConnectionF.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, email);
+            pstmt.setString(2, password);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return new User(rs.getString("name"), rs.getString("email"), rs.getString("password"));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error retrieving user by email and password.");
+            e.printStackTrace();
+        }
+        return null; // Return null if no user is found or if an error occurs
+    }
+	
+	
+	
+	
+	
+	/*public static void loadUsersFromFile(String filename) {
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {// automatically close resource
 			String line;
 			// read line till there are no more line to be read
@@ -41,7 +116,9 @@ public class UserManager {
 		}
 	}
 
-	// Method to check if an email already exists in the list of users
+*/
+
+	/*// Method to check if an email already exists in the list of users
 	public static boolean emailExists(String email) {
 		for (User user : users) {
 			if (user.getEmail().equals(email)) {
@@ -74,4 +151,7 @@ public class UserManager {
 		}
 		return null; // No match found, or credentials are incorrect
 	}
+
+*/
+
 }

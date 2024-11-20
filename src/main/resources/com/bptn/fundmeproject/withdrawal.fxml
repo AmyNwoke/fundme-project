@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bptn.fundmeproject.controller.FundSavingsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bptn.fundmeproject.controller.WithdrawalController">
    <left>
       <VBox prefHeight="334.0" prefWidth="140.0" style="-fx-border-color: #000000; -fx-border-radius: 5px; -fx-border-style: solid; -fx-border-width: 2px; -fx-background-color: #000000;" BorderPane.alignment="CENTER">
          <children>
@@ -60,7 +60,7 @@
                         <Image url="@fund%20fund%20savings.jpeg" />
                      </image>
                   </ImageView>
-                  <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="91.0" style="-fx-background-color: #000000;" text="Fund Savings" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#switchToFundSavingsOnAction" prefHeight="22.0" prefWidth="91.0" style="-fx-background-color: #000000;" text="Fund Savings" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>
@@ -97,10 +97,13 @@
                   </Button>
                </children>
             </HBox>
-            <HBox prefHeight="125.0" prefWidth="136.0" />
+            <HBox prefHeight="125.0" prefWidth="136.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="37.0" prefWidth="136.0" />
+               </children></HBox>
             <HBox alignment="CENTER" prefHeight="0.0" prefWidth="136.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#switchToSignupButtonOnAction" prefHeight="43.0" prefWidth="82.0" text="Sign Out" textFill="#e26618">
+                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="82.0" text="Sign Out" textFill="#e26618">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>
@@ -114,11 +117,11 @@
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="487.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="144.0" layoutY="274.0" prefHeight="17.0" prefWidth="196.0" text="fundmesavings@gmail.com">
+            <Label layoutX="144.0" layoutY="171.0" prefHeight="17.0" prefWidth="196.0" text="Your total group savings">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
-            <Label alignment="CENTER" layoutX="22.0" layoutY="256.0" prefHeight="17.0" prefWidth="416.0" text="Please send your payment via interac transfer to">
+            <Label alignment="CENTER" layoutX="22.0" layoutY="153.0" prefHeight="17.0" prefWidth="416.0" text="Please input your interac email to withdraw ">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
@@ -126,23 +129,31 @@
                <font>
                   <Font name="System Bold" size="10.0" />
                </font></Button>
-            <Label alignment="CENTER" layoutX="75.0" layoutY="55.0" prefHeight="20.0" prefWidth="309.0" text="Enter the group code to fund group" textFill="#0d0d0d">
+            <Label alignment="CENTER" layoutX="75.0" layoutY="45.0" prefHeight="20.0" prefWidth="309.0" text="Enter the group code to withdraw" textFill="#0d0d0d">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="groupCodeField" alignment="CENTER" layoutX="91.0" layoutY="88.0" prefHeight="25.0" prefWidth="129.0" promptText="Group Code">
+            <TextField fx:id="groupCodeField" alignment="CENTER" layoutX="88.0" layoutY="100.0" prefHeight="25.0" prefWidth="129.0" promptText="Group Code">
                <font>
                   <Font size="10.0" />
                </font></TextField>
-            <Label fx:id="groupNameLabel" layoutX="91.0" layoutY="146.0" prefHeight="39.0" prefWidth="277.0" style="-fx-background-color: e0e0e0;" text="Group Name " textFill="#1c1b1bb1" />
-            <Label fx:id="individualContributionLabel" layoutX="92.0" layoutY="200.0" prefHeight="39.0" prefWidth="276.0" style="-fx-background-color: e0e0e0;" text="Individual Contribution" textFill="#00000094" />
-            <HBox alignment="CENTER" layoutX="-67.0" layoutY="283.0" prefHeight="37.0" prefWidth="136.0" />
-            <Button layoutX="242.0" layoutY="88.0" mnemonicParsing="false" onAction="#checkGroupButtonOnAction" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #000000;" text="Check" textFill="WHITE">
+            <Button layoutX="242.0" layoutY="100.0" mnemonicParsing="false" onAction="#checkButtonOnAction" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #000000;" text="Check" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Button>
+            <TextField fx:id="interacEmailField" layoutX="94.0" layoutY="214.0" prefHeight="25.0" prefWidth="272.0" />
+            <Label layoutX="106.0" layoutY="274.0" prefHeight="17.0" prefWidth="272.0" text="NOTE: Your Group Members will be notified ">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="75.0" layoutY="65.0" prefHeight="20.0" prefWidth="309.0" text="Only the group creator can withdraw" textFill="#0d0d0d">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

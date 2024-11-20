@@ -4,12 +4,15 @@ module com.bptn.demofx {
     requires javafx.graphics;
 	requires javafx.base;
 	requires jakarta.mail;
+	requires java.sql;
 	exports com.bptn.fundmeproject.model to javafx.fxml; 
 	exports com.bptn.fundmeproject.manager to javafx.fxml;
 	exports com.bptn.fundmeproject.controller to javafx.fxml;
 	opens com.bptn.fundmeproject.controller to javafx.fxml;
+	
 
 	
+
 	opens com.bptn.fundmeproject.model to javafx.base;
 	opens com.bptn.fundmeproject.manager to javafx.base;
 
@@ -18,3 +21,4 @@ module com.bptn.demofx {
     exports com.bptn.fundmeproject;
     
 }
+

@@ -1,3 +1,2 @@
 GroupName,GroupCode,NumOfMembers,TargetAmount,SavingsPeriod,MonthlyContribution,Frequency,StartDate,SavingFor,Members
-happy,839972,2,300.0,1,150.0,Monthly,2024-10-28,vacation,amy;oluchi
-yes,298134,2,200.0,1,100.0,Monthly,2024-10-28,vacation,ada
+Test Group,TG123,5,1000.0,12,83.33,Monthly,2024-01-01,Vacation,John

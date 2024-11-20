@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,65 +13,102 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bptn.fundmeproject.controller.SignupController">
-   <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="190.0" fitWidth="223.0" layoutX="-2.0" layoutY="155.0">
-               <image>
-                  <Image url="@fundme.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="152.0" fitWidth="224.0">
-               <image>
-                  <Image url="@WhatsApp%20Image%202024-10-16%20at%201.03.58%20AM.jpeg" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   </left>
    <right>
-      <AnchorPane prefHeight="349.0" prefWidth="381.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="349.0" prefWidth="398.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="139.0" fitWidth="172.0" layoutX="28.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="169.0" layoutY="21.0">
-               <image>
-                  <Image url="@padlock.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="15.0" layoutY="86.0" prefHeight="20.0" prefWidth="94.0" text="Full Name" textFill="#f67b16">
+            <Label layoutX="81.0" layoutY="59.0" prefHeight="20.0" prefWidth="94.0" text="Full Name" textFill="#161616">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font size="10.0" />
                </font>
             </Label>
-            <Label layoutX="15.0" layoutY="126.0" prefHeight="20.0" prefWidth="94.0" text="Email" textFill="#e47e2a">
+            <Label layoutX="81.0" layoutY="151.0" prefHeight="20.0" prefWidth="94.0" text="Password" textFill="#161616">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font size="10.0" />
                </font>
             </Label>
-            <Label layoutX="6.0" layoutY="162.0" prefHeight="20.0" prefWidth="94.0" text="Password" textFill="#e47e2a">
+            <Label layoutX="81.0" layoutY="197.0" prefHeight="27.0" prefWidth="142.0" text="Confirm password " textFill="#161616">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font size="10.0" />
                </font>
             </Label>
-            <Label layoutX="6.0" layoutY="212.0" prefHeight="27.0" prefWidth="142.0" text="Confirm password " textFill="#e47e2a">
+            <TextField fx:id="fullName" layoutX="81.0" layoutY="76.0" prefHeight="11.0" prefWidth="199.0" />
+            <TextField fx:id="userEmail" layoutX="80.0" layoutY="126.0" prefHeight="14.0" prefWidth="201.0" />
+            <PasswordField fx:id="userPassword" layoutX="79.0" layoutY="172.0" prefHeight="13.0" prefWidth="204.0" />
+            <PasswordField fx:id="userPasswordConfirm" layoutX="79.0" layoutY="226.0" prefHeight="15.0" prefWidth="204.0" />
+            <Button layoutX="82.0" layoutY="275.0" mnemonicParsing="false" onAction="#signUpButtonOnAction" prefHeight="25.0" prefWidth="198.0" style="-fx-background-color: #000000; -fx-text-fill: #ffffff;" text="Sign Up">
                <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <TextField fx:id="fullName" layoutX="155.0" layoutY="86.0" prefHeight="25.0" prefWidth="199.0" />
-            <TextField fx:id="userEmail" layoutX="152.0" layoutY="126.0" prefHeight="25.0" prefWidth="201.0" />
-            <PasswordField fx:id="userPassword" layoutX="153.0" layoutY="162.0" prefHeight="25.0" prefWidth="204.0" />
-            <PasswordField fx:id="userPasswordConfirm" layoutX="153.0" layoutY="213.0" prefHeight="25.0" prefWidth="204.0" />
-            <Button layoutX="140.0" layoutY="260.0" mnemonicParsing="false" onAction="#signUpButtonOnAction" text="Sign Up" />
+                  <Font name="System Bold" size="10.0" />
+               </font></Button>
             <Label fx:id="errorLabel" layoutX="67.0" layoutY="60.0" textFill="#db1616" />
-            <Label layoutX="104.0" layoutY="297.0" prefHeight="17.0" prefWidth="187.0" text="Already have an account?" />
-            <Button layoutX="253.0" layoutY="293.0" mnemonicParsing="false" onAction="#switchToLoginOnAction" text="Log in " />
+            <Label layoutX="87.0" layoutY="309.0" prefHeight="17.0" prefWidth="187.0" text="Already have an account?">
+               <font>
+                  <Font size="8.0" />
+               </font></Label>
+            <Button layoutX="214.0" layoutY="309.0" mnemonicParsing="false" onAction="#switchToLoginOnAction" style="-fx-background-color: #000000; -fx-text-fill: #ffffff;" text="Log in ">
+               <font>
+                  <Font size="8.0" />
+               </font></Button>
+            <Label layoutX="107.0" layoutY="30.0" text="Create an Account ">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="81.0" layoutY="106.0" prefHeight="20.0" prefWidth="94.0" text="Email" textFill="#161616">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </right>
    <center>
-      <Label text="Label" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="42.0" fitWidth="44.0" layoutX="20.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@fund%20happy%20man.jpeg" />
+               </image>
+               <effect>
+                  <InnerShadow radius="19.7325" width="59.93" />
+               </effect></ImageView>
+            <ImageView fitHeight="115.0" fitWidth="120.0" layoutX="41.0" layoutY="154.0">
+               <image>
+                  <Image url="@fundmelogo.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="126.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@fund%20happyfamily.jpeg" />
+               </image>
+               <effect>
+                  <DropShadow radius="34.332499999999996" width="118.33">
+                     <input>
+                        <InnerShadow />
+                     </input>
+                  </DropShadow>
+               </effect>
+            </ImageView>
+            <Label layoutX="13.0" layoutY="72.0" prefHeight="19.0" prefWidth="54.0" text="Enter " textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="27.0" layoutY="95.0" prefHeight="20.0" prefWidth="95.0" text="the Future " textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="115.0" prefHeight="20.0" prefWidth="130.0" text="of  Group Savings " textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="81.0" layoutY="144.0" prefHeight="20.0" prefWidth="95.0" text="with " textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </center>
 </BorderPane>

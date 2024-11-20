@@ -29,6 +29,8 @@ public class DashboardController {
 	private Label startDateLabel;
 	@FXML
 	private Label totalSavingsLabel;
+	@FXML
+	private Label fundsWithdrawnLabel;
 
 	// TableView and its columns for member contributions
 	@FXML
@@ -58,6 +60,7 @@ public class DashboardController {
 			loadGroupDetails(group);
 			loadContributions(groupCode);
 			loadGroupSavingsProgress(groupCode);
+			checkWithdrawalStatus(group);
 		}
 
 	}
@@ -86,14 +89,21 @@ public class DashboardController {
 
 	// Method to load and display total savings for a group
 	private void loadGroupSavingsProgress(String groupCode) {
-		SavingsProgress savingsProgress = groupManager.getTotalSavingsProgressForGroup(groupCode);
+		double totalSavings = groupManager.getTotalSavingsForGroup(groupCode);
 
-		if (savingsProgress != null) {
-			System.out.println("savings progress: " + savingsProgress.toString());
+		System.out.println("savings progress: " + totalSavings);
 
-			totalSavingsLabel.setText(String.format("%.2f", savingsProgress.getTotalSavings()));
+		totalSavingsLabel.setText(String.format("%.2f", totalSavings));
+
+	}
+
+	// Method to check and display withdrawal status
+	private void checkWithdrawalStatus(Group group) {
+		if (group.isWithdrawn()) {
+			fundsWithdrawnLabel.setText("Funds Withdrawn"); // Display if funds withdrawn
+			fundsWithdrawnLabel.setStyle("-fx-text-fill: green;"); // Optional: Set color
 		} else {
-			totalSavingsLabel.setText("No Data");
+			fundsWithdrawnLabel.setText(""); // Clear label if not withdrawn
 		}
 	}
 
@@ -115,6 +125,11 @@ public class DashboardController {
 	@FXML
 	void switchToFundSavingsOnAction(ActionEvent event) throws IOException {
 		App.setRoot("fundsavings");
+	}
+
+	@FXML
+	void switchToWithdrawalOnAction(ActionEvent event) throws IOException {
+		App.setRoot("withdrawal");
 	}
 
 }

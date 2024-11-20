@@ -88,7 +88,7 @@ public class CreateGroupController {
 		// Create new group and call addGroup method in group manager
 		String groupCode = generateGroupCode(); // Call method to generate group code
 		Group newGroup = new Group(groupName, memberCount, savingsTarget, savingsPeriod, savingsFrequency,
-				startDate.toString(), purpose, groupCode, (savingsTarget / savingsPeriod / memberCount));
+				startDate.toString(), purpose, groupCode, (savingsTarget / savingsPeriod / memberCount), false);
 
 		// call addGroup method in group manager and include the creator as the first
 		// member
@@ -160,6 +160,16 @@ public class CreateGroupController {
 	@FXML
 	void switchToFundSavingsOnAction(ActionEvent event) throws IOException {
 		App.setRoot("fundsavings");
+	}
+
+	@FXML
+	void switchToDashboardOnAction(ActionEvent event) throws IOException {
+		App.setRoot("dashboard");
+	}
+
+	@FXML
+	void switchToWithdrawalOnAction(ActionEvent event) throws IOException {
+		App.setRoot("withdrawal");
 	}
 
 	@FXML

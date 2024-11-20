@@ -1,9 +1,13 @@
 package com.bptn.fundmeproject.manager;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import com.bptn.fundmeproject.model.*;
 import com.bptn.fundmeproject.service.GroupService;
 import com.bptn.fundmeproject.service.SavingsContributionService;
+import com.bptn.fundmeproject.utility.DatabaseConnectionF;
 
 public class GroupManager {
 	// Singleton instance
@@ -31,7 +35,7 @@ public class GroupManager {
 
 	public void addGroup(Group group, String creatorName) throws Exception {
 		groupService.addGroup(group, creatorName);
-		savingsContributionService.initializeSavingsProgress(group, creatorName);
+		//savingsContributionService.initializeSavingsProgress(group, creatorName);
 	}
 
 	// calling method to find group by code
@@ -59,8 +63,47 @@ public class GroupManager {
 		return savingsContributionService.getContributionList(groupCode);
 	}
 
-	// used by dashboard to display the total savings progress
+/*	// used by dashboard to display the total savings progress
 	public SavingsProgress getTotalSavingsProgressForGroup(String groupCode) {
 		return savingsContributionService.getTotalSavingsProgressForGroup(groupCode);
 	}
+	*/
+	
+	// Used by dashboard to display the total savings for the group
+    public double getTotalSavingsForGroup(String groupCode) { // Updated method call
+        return savingsContributionService.getTotalSavingsForGroup(groupCode); // Updated to getTotalSavingsForGroup
+    }
+    
+    public void updateWithdrawalStatus(String groupCode, boolean withdrawnStatus) {
+        groupService.updateWithdrawalStatus(groupCode, withdrawnStatus);
+    }
+    
+    public List<String> getGroupEmailsByCode(String groupCode) {
+        return groupService.getGroupEmailsByCode(groupCode);
+    }
+
+ // Method to check if the user is the creator of the group
+    public boolean isGroupCreator(String groupCode, String userName) {
+        return groupService.isGroupCreator(groupCode, userName);
+    }
+    
+    public void recordWithdrawal(String groupCode, String interacEmail) {
+        double totalSavings = getTotalSavingsForGroup(groupCode);
+
+        String sql = "INSERT INTO \"WITHDRAWALS\" (\"groupCode\", \"withdrawalAmount\", \"withdrawalDate\", \"interacEmail\") VALUES (?, ?, CURRENT_DATE, ?)";
+        try (Connection conn = DatabaseConnectionF.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, groupCode);  // Use groupCode as the identifier
+            pstmt.setDouble(2, totalSavings);
+            pstmt.setString(3, interacEmail);
+            pstmt.executeUpdate();
+            System.out.println("Withdrawal recorded successfully.");
+        } catch (SQLException e) {
+            System.out.println("Error recording withdrawal.");
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

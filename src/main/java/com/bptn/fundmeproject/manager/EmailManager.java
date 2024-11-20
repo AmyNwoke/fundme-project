@@ -76,4 +76,11 @@ public class EmailManager {
 		sendEmail(toEmail, subject, messageBody);
 	}
 
+	public void sendWithdrawalNotification(String toEmail) {
+	    String subject = "FundMe Group Savings Withdrawal Notification";
+	    String messageBody = "Hello,\n\nThis is to notify you that a withdrawal has been made from your group savings.\n\nRegards,\nFundMeApp Team";
+	    sendEmail(toEmail, subject, messageBody);
+	}
+
+
 }
