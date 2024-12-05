@@ -1,9 +1,9 @@
-PROJECT NAME: FundMe - Group Savings Application
+## PROJECT NAME: FundMe - Group Savings Application
 
-PROJECT SUMMARY:
-FundMe is a group savings application designed to help users collaborate toward shared financial goals. Users can create, join, and manage savings groups, where each group has a defined target savings amount, frequency, and contributions from each member. FundMe allows members to track progress, contribute towards goals, and view their group’s financial achievements through a user-friendly dashboard.
+# PROJECT SUMMARY:
+FundMe is a group savings application designed to help users collaborate toward shared financial goals. Users can create, join, withdraw and manage savings groups, where each group has a defined target savings amount, frequency, and contributions from each member. FundMe allows members to track progress, contribute towards goals, and view their group’s financial achievements through a user-friendly dashboard.
 
-KEY BENEFITS:
+# KEY BENEFITS:
 **Collaborative Savings**: Supports a group-based approach to saving, making it easier for users to reach shared financial goals.
 **Accountability and Transparency**: Each transaction is recorded, ensuring transparency within the group.
 **Progress Tracking**: A dashboard feature lets users monitor their savings progress in real-time.
@@ -13,6 +13,7 @@ CORE FEATURES:
 **Group Management:** Create a group with a target, savings frequency, and defined member count.
 **Join Existing Groups**: Join a group with a unique group code.
 **Savings Contribution:** Make contributions towards a group’s savings target.
+**Withdraw Savings** Withdraw savings 
 **Dashboard**: View group progress, member contributions, and overall savings progress.
 **Email Notifications:** Receive email confirmations after successful funding.
 
